@@ -1,13 +1,13 @@
 ## zabbix-ansible
 
-First steps with Ansible and Zabbix collections on FreeBSD
+First steps with Ansible and Zabbix collections on FreeBSD and Ubuntu
 
-### Dependencies FreeBSD
+### Packages FreeBSD
 
 - Package - py37-pip-20.2.3		Tool for installing and managing Python packages
 - Package - py37-ansible-2.9.7		Radically simple IT automation
 
-### Dependencies Ubuntu
+### Packages Ubuntu
 
 - Package - ansible			2.0.0.2-2ubuntu1.3
 - Package - python-pip			8.1.1-2ubuntu0.6
@@ -15,7 +15,7 @@ First steps with Ansible and Zabbix collections on FreeBSD
 ### How it works
 
 Ansible use collections https://galaxy.ansible.com/community/zabbix and by
-Zabbix API create Hosts in Zabbix monitoring system.
+Zabbix API create Host's in Zabbix monitoring system.
 
 ### Install Ubuntu
 
@@ -61,6 +61,8 @@ Installing 'community.zabbix:1.2.0' to '/root/.ansible/collections/ansible_colle
 
 ### Run playbook
 ```console
+ansible-playbook zabbix-add-host-group.yml
+...
 ansible-playbook zabbix-add-host-seznam.yml
 PLAY [Using Zabbix collection] **********************************************************************************************************************************************
 
@@ -78,7 +80,7 @@ localhost                  : ok=2    changed=1    unreachable=0    failed=0    s
 
 ![Zabbix Host detail](./images/Zabbix-Host-Detail.png)
 
-## To do
+### To do
 
 - Create Host group
 - Create Zabbix user

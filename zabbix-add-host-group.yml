@@ -1,0 +1,13 @@
+- name: Using Zabbix collection
+  hosts: localhost
+  collections:
+    - community.zabbix
+  tasks:
+    - name: Create host groups
+      zabbix_group:
+      server_url: http://monitor.example.com
+      login_user: username
+      login_password: password
+      state: present
+      host_groups:
+        - Public/WWW
