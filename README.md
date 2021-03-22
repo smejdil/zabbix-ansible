@@ -47,6 +47,10 @@ PLAY RECAP *********************************************************************
 localhost                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 ```
 
+### Images
+
+![Zabbix Host detail](./images/Zabbix-Host-Detail.png)
+
 ## To do
 
 - Create Host group
