@@ -34,7 +34,7 @@ Installing 'community.zabbix:1.2.0' to '/root/.ansible/collections/ansible_colle
 
 ### Run playbook
 ```console
-ansible-playbook zabbix-add-host.yml
+ansible-playbook zabbix-add-host-seznam.yml
 PLAY [Using Zabbix collection] **********************************************************************************************************************************************
 
 TASK [Gathering Facts] ******************************************************************************************************************************************************
