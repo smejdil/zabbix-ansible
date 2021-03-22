@@ -82,6 +82,5 @@ localhost                  : ok=2    changed=1    unreachable=0    failed=0    s
 
 ### To do
 
-- Create Host group
 - Create Zabbix user
 - Create other Zabbix objects
