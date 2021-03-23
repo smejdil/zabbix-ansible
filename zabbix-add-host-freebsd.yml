@@ -5,9 +5,9 @@
   tasks:
     - name: Create a FreeBSD host or update
       zabbix_host:
-        server_url: http://monitor.example.com
-        login_user: username
-        login_password: password
+        server_url: https://zabbix.pfsense.cz
+        login_user: "{{ lookup('env','ZABBIX_USER') }}"
+        login_password: "{{ lookup('env','ZABBIX_PASSWORD') }}"
         host_name: www.freebsd.org
         visible_name: Webserver FreeBSD
         description: Monitoring FreeBSD webserver
