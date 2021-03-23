@@ -1,6 +1,6 @@
 ## zabbix-ansible
 
-First steps with Ansible and Zabbix collections on FreeBSD and Ubuntu
+First steps with Ansible and Zabbix collections on FreeBSD 12.2, Ubuntu 20.04, CentOS 7.9
 
 ### Packages FreeBSD
 
@@ -9,31 +9,18 @@ First steps with Ansible and Zabbix collections on FreeBSD and Ubuntu
 
 ### Packages Ubuntu
 
-- Package - ansible			2.0.0.2-2ubuntu1.3
-- Package - python-pip			8.1.1-2ubuntu0.6
+- Package - ansible			2.9.6+dfsg-1
+- Package - python-pip			20.0.2-5ubuntu1.1
+
+### Packages CentOS
+
+- Package - ansible			2.9.18-1.el7.noarch	
+- Package - python2-pip			8.1.2-14.el7.noarch
 
 ### How it works
 
 Ansible use collections https://galaxy.ansible.com/community/zabbix and by
-Zabbix API create Host's in Zabbix monitoring system.
-
-### Install Ubuntu
-
-```console
-sudo apt install python-pip
-sudo apt install ansible
-
-pip3 install zabbix-api
-Collecting zabbix-api
-  Downloading zabbix-api-0.5.4.tar.gz (5.6 kB)
-Building wheels for collected packages: zabbix-api
-  Building wheel for zabbix-api (setup.py) ... done
-  Created wheel for zabbix-api: filename=zabbix_api-0.5.4-py3-none-any.whl size=5612 sha256=f6903e16d4c89c507ee4cd8d8d70447a563731a89de33072799ed5d89f135343
-  Stored in directory: /root/.cache/pip/wheels/a4/96/9f/c842db4c072e03fb30233828f7fceef11a92450964261de964
-Successfully built zabbix-api
-Installing collected packages: zabbix-api
-Successfully installed zabbix-api-0.5.4
-```
+Zabbix API create Host's and Host's Group in Zabbix monitoring system.
 
 ### Install FreeBSD
 
@@ -50,11 +37,41 @@ Installing collected packages: zabbix-api
 Successfully installed zabbix-api-0.5.4
 ```
 
+### Install Ubuntu
+
+```console
+apt install python-pip
+apt install ansible
+
+pip3 install zabbix-api
+Collecting zabbix-api
+  Downloading zabbix-api-0.5.4.tar.gz (5.6 kB)
+Building wheels for collected packages: zabbix-api
+  Building wheel for zabbix-api (setup.py) ... done
+  Created wheel for zabbix-api: filename=zabbix_api-0.5.4-py3-none-any.whl size=5612 sha256=f6903e16d4c89c507ee4cd8d8d70447a563731a89de33072799ed5d89f135343
+  Stored in directory: /root/.cache/pip/wheels/a4/96/9f/c842db4c072e03fb30233828f7fceef11a92450964261de964
+Successfully built zabbix-api
+Installing collected packages: zabbix-api
+Successfully installed zabbix-api-0.5.4
+```
+
+### Install CentOS
+```console
+yum install ansible
+yum install python-pip
+
+Collecting zabbix-api
+  Downloading https://files.pythonhosted.org/packages/e3/ed/2092731880f0de5b07067fc446dc0fc5166f2ee98018b6d524cd3e28a69d/zabbix-api-0.5.4.tar.gz
+Installing collected packages: zabbix-api
+  Running setup.py install for zabbix-api ... done
+Successfully installed zabbix-api-0.5.4
+```
+
 ### Install ansible collection zabbix
 
 ```console
 ansible-galaxy collection install -r requirements.yml
-rocess install dependency map
+Process install dependency map
 Starting collection install process
 Installing 'community.zabbix:1.2.0' to '/root/.ansible/collections/ansible_collections/community/zabbix'
 ```
@@ -82,5 +99,7 @@ localhost                  : ok=2    changed=1    unreachable=0    failed=0    s
 
 ### To do
 
+- Import Templates
+- Import Media
 - Create Zabbix user
 - Create other Zabbix objects
