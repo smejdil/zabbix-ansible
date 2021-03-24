@@ -81,16 +81,9 @@ Installing 'community.zabbix:1.2.0' to '/root/.ansible/collections/ansible_colle
 export ZABBIX_USER=zabbix_admin_user
 export ZABBIX_PASSWORD=*******************
 
-zabbix-add-screen.yml
-zabbix-add-user.yml
-
-
 ansible-playbook zabbix-add-host-group.yml
-...
 ansible-playbook zabbix-add-host-freebsd.yml
-...
 ansible-playbook zabbix-add-host-smejdil.yml
-...
 ansible-playbook zabbix-add-host-seznam.yml
 PLAY [Using Zabbix collection] **********************************************************************************************************************************************
 
@@ -104,7 +97,6 @@ PLAY RECAP *********************************************************************
 localhost                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 
 ansible-playbook zabbix-add-screen.yml
-...
 ansible-playbook zabbix-add-user.yml
 ```
 
