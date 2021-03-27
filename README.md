@@ -98,6 +98,7 @@ localhost                  : ok=2    changed=1    unreachable=0    failed=0    s
 
 ansible-playbook zabbix-add-screen.yml
 ansible-playbook zabbix-add-user.yml
+ansible-playbook zabbix-add-template.yml
 ```
 
 ### Images
@@ -106,7 +107,5 @@ ansible-playbook zabbix-add-user.yml
 
 ### To do
 
-- Import Templates
 - Import Media
-- Create Zabbix user
 - Create other Zabbix objects
