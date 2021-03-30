@@ -1,0 +1,14 @@
+---
+- name: Create screen Public/WWW-servers or update the existing screen items
+  zabbix_screen:
+    server_url: "{{ server_url }}"
+    login_user: "{{ lookup('env','ZABBIX_USER') }}"
+    login_password: "{{ lookup('env','ZABBIX_PASSWORD') }}"
+    screens:
+      - screen_name: Public/WWW-servers
+        host_group: Public/WWW
+        state: present
+        graph_names:
+          - ICMP Ping
+        graph_width: 500
+        graph_height: 100

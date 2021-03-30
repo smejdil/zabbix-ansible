@@ -1,0 +1,28 @@
+---
+- name: Create a FreeBSD host or update
+  zabbix_host:
+    server_url: "{{ server_url }}"
+    login_user: "{{ lookup('env','ZABBIX_USER') }}"
+    login_password: "{{ lookup('env','ZABBIX_PASSWORD') }}"
+    host_name: www.freebsd.org
+    visible_name: Webserver FreeBSD
+    description: Monitoring FreeBSD webserver
+    host_groups:
+     - Public/WWW
+    link_templates:
+     - Template Module ICMP Ping
+    status: enabled
+    state: present
+    inventory_mode: automatic
+    interfaces:
+      - type: 1
+        main: 1
+        useip: 1
+        ip: 96.47.72.84
+        dns: "wfe0.nyi.freebsd.org"
+        port: "10050"
+    tags:
+      - tag: OS
+        value: FreeBSD
+      - tag: App
+        value: Webserver

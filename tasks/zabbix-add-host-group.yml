@@ -1,0 +1,9 @@
+---
+- name: Create host groups
+  zabbix_group:
+    server_url: "{{ server_url }}"
+    login_user: "{{ lookup('env','ZABBIX_USER') }}"
+    login_password: "{{ lookup('env','ZABBIX_PASSWORD') }}"
+    state: present
+    host_groups:
+      - Public/WWW

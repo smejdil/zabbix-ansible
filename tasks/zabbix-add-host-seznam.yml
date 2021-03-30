@@ -1,0 +1,28 @@
+---
+- name: Create a Seznam host or update
+  zabbix_host:
+    server_url: "{{ server_url }}"
+    login_user: "{{ lookup('env','ZABBIX_USER') }}"
+    login_password: "{{ lookup('env','ZABBIX_PASSWORD') }}"
+    host_name: www.seznam.cz
+    visible_name: Webserver Seznam.cz
+    description: Monitoring Seznam webserver
+    host_groups:
+     - Public/WWW
+    link_templates:
+     - Template Module ICMP Ping
+    status: enabled
+    state: present
+    inventory_mode: automatic
+    interfaces:
+      - type: 1
+        main: 1
+        useip: 1
+        ip: 2a02:598:4444:1::1
+        dns: "www.seznam.cz"
+        port: "10050"
+    tags:
+      - tag: OS
+        value: Linux
+      - tag: App
+        value: Webserver
