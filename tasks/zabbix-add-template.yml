@@ -4,5 +4,5 @@
     server_url: "{{ server_url }}"
     login_user: "{{ lookup('env','ZABBIX_USER') }}"
     login_password: "{{ lookup('env','ZABBIX_PASSWORD') }}"
-    template_xml: "{{ lookup('file', 'Templates/Template-HTTPS-Cert-and-Service-5.0.xml') }}"
+    template_xml: "{{ lookup('file', 'templates/Template-HTTPS-Cert-and-Service-5.0.xml') }}"
     state: present
