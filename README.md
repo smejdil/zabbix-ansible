@@ -60,6 +60,7 @@ Successfully installed zabbix-api-0.5.4
 yum install ansible
 yum install python-pip
 
+pip3 install zabbix-api
 Collecting zabbix-api
   Downloading https://files.pythonhosted.org/packages/e3/ed/2092731880f0de5b07067fc446dc0fc5166f2ee98018b6d524cd3e28a69d/zabbix-api-0.5.4.tar.gz
 Installing collected packages: zabbix-api
@@ -73,7 +74,7 @@ Successfully installed zabbix-api-0.5.4
 ansible-galaxy collection install -r requirements.yml
 Process install dependency map
 Starting collection install process
-Installing 'community.zabbix:1.2.0' to '/root/.ansible/collections/ansible_collections/community/zabbix'
+Installing 'community.zabbix:1.3.0' to '/root/.ansible/collections/ansible_collections/community/zabbix'
 ```
 
 ### Run playbook
