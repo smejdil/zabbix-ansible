@@ -82,24 +82,56 @@ Installing 'community.zabbix:1.3.0' to '/root/.ansible/collections/ansible_colle
 export ZABBIX_USER=zabbix_admin_user
 export ZABBIX_PASSWORD=*******************
 
-ansible-playbook zabbix-add-host-group.yml
-ansible-playbook zabbix-add-host-freebsd.yml
-ansible-playbook zabbix-add-host-smejdil.yml
-ansible-playbook zabbix-add-host-seznam.yml
-PLAY [Using Zabbix collection] **********************************************************************************************************************************************
+ansible-playbook setup_zabbix_server.yml 
+PLAY [Using Zabbix collection] *********************************************************************************
 
-TASK [Gathering Facts] ******************************************************************************************************************************************************
+TASK [Gathering Facts] *****************************************************************************************
+ok: [localhost]
+- Import Media
+TASK [include_tasks] *******************************************************************************************
+included: /work/zabbix-ansible/tasks/zabbix-add-host-group.yml for localhost
+
+TASK [Create host groups] **************************************************************************************
 ok: [localhost]
 
-TASK [Create a Seznam host or update] ***************************************************************************************************************************************
+TASK [include_tasks] *******************************************************************************************
+included: /work/zabbix-ansible/tasks/zabbix-add-host-freebsd.yml for localhost
+
+TASK [Create a FreeBSD host or update] *************************************************************************
+ok: [localhost]
+
+TASK [include_tasks] *******************************************************************************************
+included: /work/zabbix-ansible/tasks/zabbix-add-host-seznam.yml for localhost
+
+TASK [Create a Seznam host or update] **************************************************************************
+ok: [localhost]
+
+TASK [include_tasks] *******************************************************************************************
+included: /work/zabbix-ansible/tasks/zabbix-add-host-smejdil.yml for localhost
+
+TASK [Create a SmEjDiL host or update] *************************************************************************
+ok: [localhost]
+
+TASK [include_tasks] *******************************************************************************************
+included: /work/zabbix-ansible/tasks/zabbix-add-screen.yml for localhost
+
+TASK [Create screen Public/WWW-servers or update the existing screen items] ************************************
+ok: [localhost]
+
+TASK [include_tasks] *******************************************************************************************
+included: /work/zabbix-ansible/tasks/zabbix-add-template.yml for localhost
+
+TASK [Import Zabbix Training from XML] *************************************************************************
+ok: [localhost]
+
+TASK [include_tasks] *******************************************************************************************
+included: /work/zabbix-ansible/tasks/zabbix-add-user.yml for localhost
+
+TASK [create a new zabbix user.] *******************************************************************************
 changed: [localhost]
 
-PLAY RECAP ******************************************************************************************************************************************************************
-localhost                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-
-ansible-playbook zabbix-add-screen.yml
-ansible-playbook zabbix-add-user.yml
-ansible-playbook zabbix-add-template.yml
+PLAY RECAP *****************************************************************************************************
+localhost                  : ok=15   changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 ```
 
 ### Images
