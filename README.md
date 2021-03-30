@@ -83,55 +83,55 @@ export ZABBIX_USER=zabbix_admin_user
 export ZABBIX_PASSWORD=*******************
 
 ansible-playbook setup_zabbix_server.yml 
-PLAY [Using Zabbix collection] *********************************************************************************
+PLAY [Using Zabbix collection] **********************************************************************************************************************************************************
 
-TASK [Gathering Facts] *****************************************************************************************
-ok: [localhost]
-- Import Media
-TASK [include_tasks] *******************************************************************************************
-included: /work/zabbix-ansible/tasks/zabbix-add-host-group.yml for localhost
-
-TASK [Create host groups] **************************************************************************************
+TASK [Gathering Facts] ******************************************************************************************************************************************************************
 ok: [localhost]
 
-TASK [include_tasks] *******************************************************************************************
-included: /work/zabbix-ansible/tasks/zabbix-add-host-freebsd.yml for localhost
+TASK [include_tasks] ********************************************************************************************************************************************************************
+included: /root/work/zabbix-ansible/tasks/zabbix-add-host-group.yml for localhost
 
-TASK [Create a FreeBSD host or update] *************************************************************************
-ok: [localhost]
-
-TASK [include_tasks] *******************************************************************************************
-included: /work/zabbix-ansible/tasks/zabbix-add-host-seznam.yml for localhost
-
-TASK [Create a Seznam host or update] **************************************************************************
-ok: [localhost]
-
-TASK [include_tasks] *******************************************************************************************
-included: /work/zabbix-ansible/tasks/zabbix-add-host-smejdil.yml for localhost
-
-TASK [Create a SmEjDiL host or update] *************************************************************************
-ok: [localhost]
-
-TASK [include_tasks] *******************************************************************************************
-included: /work/zabbix-ansible/tasks/zabbix-add-screen.yml for localhost
-
-TASK [Create screen Public/WWW-servers or update the existing screen items] ************************************
-ok: [localhost]
-
-TASK [include_tasks] *******************************************************************************************
-included: /work/zabbix-ansible/tasks/zabbix-add-template.yml for localhost
-
-TASK [Import Zabbix Training from XML] *************************************************************************
-ok: [localhost]
-
-TASK [include_tasks] *******************************************************************************************
-included: /work/zabbix-ansible/tasks/zabbix-add-user.yml for localhost
-
-TASK [create a new zabbix user.] *******************************************************************************
+TASK [Create host groups] ***************************************************************************************************************************************************************
 changed: [localhost]
 
-PLAY RECAP *****************************************************************************************************
-localhost                  : ok=15   changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+TASK [include_tasks] ********************************************************************************************************************************************************************
+included: /root/work/zabbix-ansible/tasks/zabbix-add-host-freebsd.yml for localhost
+
+TASK [Create a FreeBSD host or update] **************************************************************************************************************************************************
+changed: [localhost]
+
+TASK [include_tasks] ********************************************************************************************************************************************************************
+included: /root/work/zabbix-ansible/tasks/zabbix-add-host-seznam.yml for localhost
+
+TASK [Create a Seznam host or update] ***************************************************************************************************************************************************
+changed: [localhost]
+
+TASK [include_tasks] ********************************************************************************************************************************************************************
+included: /root/work/zabbix-ansible/tasks/zabbix-add-host-smejdil.yml for localhost
+
+TASK [Create a SmEjDiL host or update] **************************************************************************************************************************************************
+changed: [localhost]
+
+TASK [include_tasks] ********************************************************************************************************************************************************************
+included: /root/work/zabbix-ansible/tasks/zabbix-add-screen.yml for localhost
+
+TASK [Create screen Public/WWW-servers or update the existing screen items] *************************************************************************************************************
+changed: [localhost]
+
+TASK [include_tasks] ********************************************************************************************************************************************************************
+included: /root/work/zabbix-ansible/tasks/zabbix-add-template.yml for localhost
+
+TASK [Import Zabbix Training from XML] **************************************************************************************************************************************************
+changed: [localhost]
+
+TASK [include_tasks] ********************************************************************************************************************************************************************
+included: /root/work/zabbix-ansible/tasks/zabbix-add-user.yml for localhost
+
+TASK [create a new zabbix user.] ********************************************************************************************************************************************************
+changed: [localhost]
+
+PLAY RECAP ******************************************************************************************************************************************************************************
+localhost                  : ok=15   changed=7    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 ```
 
 ### Images
