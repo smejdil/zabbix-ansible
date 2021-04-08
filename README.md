@@ -14,18 +14,20 @@ First steps with Ansible and Zabbix collections on FreeBSD 12.2, OpenBSD 6.8, Ub
 
 ### Packages Ubuntu
 
-- Package - ansible								2.9.6+dfsg-1
 - Package - python-pip						20.0.2-5ubuntu1.1
+- Package - ansible								2.9.6+dfsg-1
 
 ### Packages CentOS
 
-- Package - ansible								2.9.18-1.el7.noarch	
 - Package - python2-pip						8.1.2-14.el7.noarch
+- Package - ansible								2.9.18-1.el7.noarch	
 
 ### How it works
 
 Ansible use collections https://galaxy.ansible.com/community/zabbix and by
 Zabbix API create Host's and Host's Group in Zabbix monitoring system.
+
+- Python package - zabbix-api 0.5.4
 
 ### Install FreeBSD
 
@@ -34,12 +36,6 @@ cd /usr/ports/devel/py-pip && make install clean
 cd /usr/ports/sysutils/ansible && make install clean
 
 pip install zabbix-api
-Collecting zabbix-api
-  Downloading zabbix-api-0.5.4.tar.gz (5.6 kB)
-Using legacy 'setup.py install' for zabbix-api, since package 'wheel' is not installed.
-Installing collected packages: zabbix-api
-    Running setup.py install for zabbix-api ... done
-Successfully installed zabbix-api-0.5.4
 ```
 
 ### Install OpenBSD
@@ -50,15 +46,6 @@ cd /usr/ports/devel/py-pip && make install clean
 cd /usr/ports/sysutils/ansible && make install clean
 
 pip3.8 install zabbix-api
-Collecting zabbix-api
-  Using cached zabbix-api-0.5.4.tar.gz (5.6 kB)
-Building wheels for collected packages: zabbix-api
-  Building wheel for zabbix-api (setup.py) ... done
-  Created wheel for zabbix-api: filename=zabbix_api-0.5.4-py3-none-any.whl size=5612 sha256=c96eff1a6ce05bf296026b875cd0500cf5c2340f79648efbf8d0be4172e89181
-  Stored in directory: /root/.cache/pip/wheels/a4/96/9f/c842db4c072e03fb30233828f7fceef11a92450964261de964
-Successfully built zabbix-api
-Installing collected packages: zabbix-api
-Successfully installed zabbix-api-0.5.4
 ```
 
 ### Install Ubuntu
@@ -68,15 +55,6 @@ apt install python-pip
 apt install ansible
 
 pip3 install zabbix-api
-Collecting zabbix-api
-  Downloading zabbix-api-0.5.4.tar.gz (5.6 kB)
-Building wheels for collected packages: zabbix-api
-  Building wheel for zabbix-api (setup.py) ... done
-  Created wheel for zabbix-api: filename=zabbix_api-0.5.4-py3-none-any.whl size=5612 sha256=f6903e16d4c89c507ee4cd8d8d70447a563731a89de33072799ed5d89f135343
-  Stored in directory: /root/.cache/pip/wheels/a4/96/9f/c842db4c072e03fb30233828f7fceef11a92450964261de964
-Successfully built zabbix-api
-Installing collected packages: zabbix-api
-Successfully installed zabbix-api-0.5.4
 ```
 
 ### Install CentOS
@@ -85,11 +63,6 @@ yum install ansible
 yum install python-pip
 
 pip3 install zabbix-api
-Collecting zabbix-api
-  Downloading https://files.pythonhosted.org/packages/e3/ed/2092731880f0de5b07067fc446dc0fc5166f2ee98018b6d524cd3e28a69d/zabbix-api-0.5.4.tar.gz
-Installing collected packages: zabbix-api
-  Running setup.py install for zabbix-api ... done
-Successfully installed zabbix-api-0.5.4
 ```
 
 ### Install ansible collection zabbix
