@@ -1,6 +1,6 @@
 ## zabbix-ansible
 
-First steps with Ansible and Zabbix collections on FreeBSD 12.2, OpenBSD 6.8, Ubuntu 20.04, CentOS 7.9
+First steps with Ansible and Zabbix collections on FreeBSD 12.2, OpenBSD 6.8, Ubuntu 20.04, CentOS Stream
 
 ### Packages FreeBSD
 
@@ -19,8 +19,8 @@ First steps with Ansible and Zabbix collections on FreeBSD 12.2, OpenBSD 6.8, Ub
 
 ### Packages CentOS
 
-- Package - python2-pip						8.1.2-14.el7.noarch
-- Package - ansible								2.9.18-1.el7.noarch	
+- Package - python3-pip						9.0.3-19.el8
+- Package - ansible								2.9.18-2.el8	
 
 ### How it works
 
@@ -59,8 +59,7 @@ pip3 install zabbix-api
 
 ### Install CentOS
 ```console
-yum install ansible
-yum install python-pip
+dnf install ansible
 
 pip3 install zabbix-api
 ```
