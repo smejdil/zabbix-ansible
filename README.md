@@ -51,7 +51,7 @@ pip3.8 install zabbix-api
 ### Install Ubuntu
 
 ```console
-apt install python-pip
+apt install python3-pip
 apt install ansible
 
 pip3 install zabbix-api

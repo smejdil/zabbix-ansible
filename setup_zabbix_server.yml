@@ -12,7 +12,9 @@
     - include_tasks: tasks/zabbix-add-host-freebsd.yml
     - include_tasks: tasks/zabbix-add-host-seznam.yml
     - include_tasks: tasks/zabbix-add-host-smejdil.yml
+    - include_tasks: tasks/zabbix-add-host-snmp.yml
+    - include_tasks: tasks/zabbix-add-host-ipmi.yml
+    - include_tasks: tasks/zabbix-add-host-jmx.yml    
     - include_tasks: tasks/zabbix-add-screen.yml
     - include_tasks: tasks/zabbix-add-template.yml
     - include_tasks: tasks/zabbix-add-user.yml
-

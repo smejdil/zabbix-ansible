@@ -1,0 +1,32 @@
+---
+- name: Create a ipmi host or update
+  zabbix_host:
+    server_url: "{{ server_url }}"
+    login_user: "{{ lookup('env','ZABBIX_USER') }}"
+    login_password: "{{ lookup('env','ZABBIX_PASSWORD') }}"
+    host_name: openipmi.sourceforge.net
+    visible_name: Webserver openipmi.sourceforge.net
+    description: Monitoring projekt openipmi.sourceforge.net
+    host_groups:
+     - Public/WWW
+    link_templates:
+     - Template Module ICMP Ping
+    status: enabled
+    state: present
+    inventory_mode: automatic
+    ipmi_authtype: 2
+    ipmi_password: ipmi
+    ipmi_privilege: 4
+    ipmi_username: ipmi
+    interfaces:
+      - type: 3
+        main: 1
+        useip: 1
+        ip: 216.105.38.10
+        dns: "openipmi.sourceforge.net"
+        port: "623"
+    tags:
+      - tag: OS
+        value: Linux
+      - tag: App
+        value: Webserver

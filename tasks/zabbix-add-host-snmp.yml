@@ -1,0 +1,38 @@
+---
+- name: Create a net-snmp host or update
+  zabbix_host:
+    server_url: "{{ server_url }}"
+    login_user: "{{ lookup('env','ZABBIX_USER') }}"
+    login_password: "{{ lookup('env','ZABBIX_PASSWORD') }}"
+    host_name: www.net-snmp.org
+    visible_name: Webserver net-snmp.org
+    description: Monitoring projekt net-snmp
+    host_groups:
+     - Public/WWW
+    link_templates:
+     - Template Module ICMP Ping
+    status: enabled
+    state: present
+    inventory_mode: automatic
+    interfaces:
+      - type: 1
+        main: 1
+        useip: 1
+        ip: 216.105.38.10
+        dns: "www.net-snmp.org"
+        port: "10050"
+      - type: 2
+        main: 1
+        useip: 1
+        ip: 216.105.38.10
+        dns: "www.net-snmp.org"
+        port: "161"
+        details:
+           version: 2
+           community: "{{ snmp_community }}"
+           bulk: 1
+    tags:
+      - tag: OS
+        value: Linux
+      - tag: App
+        value: Webserver

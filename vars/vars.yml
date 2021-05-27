@@ -2,5 +2,6 @@
 # zabbix server
 
 server_url: https://zabbix.pfsense.cz
+snmp_community: {$SNMP_COMMUNITY}
 
 # EOF
