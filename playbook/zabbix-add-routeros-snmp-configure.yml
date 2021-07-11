@@ -1,0 +1,60 @@
+---
+- name: Find RouterOS hosts in inventory and add Hosts
+  hosts: all
+  connection: local
+  gather_facts: no
+  collections:
+    - community.zabbix
+    - ansible.general
+    
+  vars_files:
+    - vars/vars.yml
+
+  tasks:
+    - name: Get SNMPv2 value
+      snmp_facts:
+        host: "{{ ansible_host }}"
+        version: v2c
+        community: "{{ snmp_community }}"
+      register: response
+      ignore_errors: True
+      notify: snmp_facts_collected
+
+    - debug:
+        msg: "SNMP System Name: {{ ansible_sysname }}  ansible_host: {{ ansible_host }} ansible_sysdescr: {{ ansible_sysdescr }} "
+
+    - name: Create or update SNMP Hosts
+      zabbix_host:
+        server_url: "{{ server_url }}"
+        login_user: "{{ lookup('env','ZABBIX_USER') }}"
+        login_password: "{{ lookup('env','ZABBIX_PASSWORD') }}"
+        host_name: "{{ ansible_sysname }}"
+        visible_name: "{{ ansible_sysname }}"
+        host_groups:
+         - Network devices
+        link_templates:
+         - Template Module ICMP Ping
+         - Template Net Mikrotik SNMP
+        status: enabled
+        state: present
+        inventory_mode: automatic
+        interfaces:
+          - type: 1
+            main: 1
+            useip: 1
+            ip: "{{ ansible_host }}"
+            port: "10050"
+          - type: 2
+            main: 1
+            useip: 1
+            ip: "{{ ansible_host }}"
+            port: "161"
+            details:
+              version: 2
+              community: "{{ snmp_community }}"
+              bulk: 1
+        tags:
+          - tag: Location
+            value: Czech Republic
+        proxy: zabbix-proxy
+      when: ansible_sysdescr is search('RouterOS*')
