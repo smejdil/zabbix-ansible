@@ -1,0 +1,76 @@
+---
+- name: Install Zabbix SIA repo and Zabbix Agent 2
+  hosts: servers
+  collections:
+    - ansible.builtin
+    - community.zabbix
+  
+  tasks:    
+  - name: Install Zabbix repo CentOS 8
+    dnf:
+      name: 'https://repo.zabbix.com/zabbix/5.0/rhel/8/x86_64/zabbix-release-5.0-1.el8.noarch.rpm'
+      state: present
+    when: (ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "8")
+
+  - name: Install Zabbix agent2 CentOS 8
+    dnf:
+      name:
+        - zabbix-agent2
+        - zabbix-sender
+        - zabbix-get
+      state: latest
+    when: (ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "8")
+    
+  - name: Install Zabbix repo CentOS 7
+    yum:
+      name: 'https://repo.zabbix.com/zabbix/5.0/rhel/7/x86_64/zabbix-release-5.0-1.el7.noarch.rpm'
+      state: present
+    when: (ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "7")
+
+  - name: Install Zabbix agent2 CentOS 7
+    yum:
+      name:
+        - zabbix-agent2
+        - zabbix-sender
+        - zabbix-get
+      state: latest
+    when: (ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "7")
+
+  - name: Install Zabbix repo CentOS 6
+    yum:
+      name: 'https://repo.zabbix.com/zabbix/5.0/rhel/6/x86_64/zabbix-release-5.0-1.el6.noarch.rpm'
+      state: present
+    when: (ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "6")
+      
+  - name: Install Zabbix agent2 CentOS 6
+    yum:
+      name:
+        - zabbix-agent2
+        - zabbix-sender
+        - zabbix-get
+      state: latest
+    when: (ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "6")
+
+  - name: Install Zabbix repo Debian 11
+    apt:
+      deb: https://repo.zabbix.com/zabbix/5.0/debian/pool/main/z/zabbix-release/zabbix-release_5.0-2+debian11_all.deb
+      update_cache: yes
+    when: (ansible_facts['distribution'] == "Debian" and ansible_facts['distribution_major_version'] == "11")
+
+  - name: Install Zabbix agent2 Debian 11
+    apt:
+      name: zabbix-agent2
+      state: present
+    when: (ansible_facts['distribution'] == "Debian" and ansible_facts['distribution_major_version'] == "11")
+
+  - name: Install Zabbix repo Debian 10
+    apt:
+      deb: https://repo.zabbix.com/zabbix/5.0/debian/pool/main/z/zabbix-release/zabbix-release_5.0-1+buster_all.deb
+      update_cache: yes
+    when: (ansible_facts['distribution'] == "Debian" and ansible_facts['distribution_major_version'] == "10")
+
+  - name: Install Zabbix agent2 Debian 10
+    apt:
+      name: zabbix-agent2
+      state: present
+    when: (ansible_facts['distribution'] == "Debian" and ansible_facts['distribution_major_version'] == "10")
