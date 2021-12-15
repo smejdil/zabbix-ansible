@@ -1,6 +1,7 @@
 ---
 - name: Using Zabbix collection
-  hosts: localhost
+  hosts: all
+  connection: local
   collections:
     - community.zabbix
 
@@ -42,3 +43,13 @@
         tags:
           - tag: Security
             value: SSL
+
+    - name: Create host macro
+      zabbix_hostmacro:
+        server_url: "{{ server_url }}"
+        login_user: "{{ lookup('env','ZABBIX_USER') }}"
+        login_password: "{{ lookup('env','ZABBIX_PASSWORD') }}"
+        host_name: "{{ ansible_host }}"        
+        macro_name: "{$CERT.WEBSITE.HOSTNAME}"
+        macro_value: "{{ ansible_host }}"
+        state: present
