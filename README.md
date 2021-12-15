@@ -134,6 +134,12 @@ localhost                  : ok=15   changed=7    unreachable=0    failed=0    s
 
 ![Zabbix Host detail](./images/Zabbix-Host-Detail.png)
 
+### Example
+
+```console
+ansible-playbook -i inventory/cert-hosts.ini playbook/zabbix-add-web-certificate.yml
+```
+
 ### To do
 
 - Import Media

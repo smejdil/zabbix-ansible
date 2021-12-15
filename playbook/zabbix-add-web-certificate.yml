@@ -1,0 +1,44 @@
+---
+- name: Using Zabbix collection
+  hosts: localhost
+  collections:
+    - community.zabbix
+
+  vars_files:
+    - vars/vars.yml
+
+  tasks:
+    - name: Create host groups
+      zabbix_group:
+        server_url: "{{ server_url }}"
+        login_user: "{{ lookup('env','ZABBIX_USER') }}"
+        login_password: "{{ lookup('env','ZABBIX_PASSWORD') }}"
+        state: present
+        host_groups:
+          - Internet servers
+
+    - name: Create a host for cert monitoring
+      zabbix_host:
+        server_url: "{{ server_url }}"
+        login_user: "{{ lookup('env','ZABBIX_USER') }}"
+        login_password: "{{ lookup('env','ZABBIX_PASSWORD') }}"
+        host_name: "{{ ansible_host }}"
+        visible_name: Cert - {{ ansible_host }}
+        description: Monitoring SSL cert
+        host_groups:
+          - Internet servers
+        link_templates:
+          - Website certificate by Zabbix agent 2
+        status: enabled
+        state: present
+        inventory_mode: automatic
+        interfaces:
+          - type: 1
+            main: 1
+            useip: 1
+            ip: 127.0.0.1
+            dns: "{{ ansible_host }}"
+            port: "10050"
+        tags:
+          - tag: Security
+            value: SSL
