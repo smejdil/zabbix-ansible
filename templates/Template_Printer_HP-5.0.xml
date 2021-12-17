@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>5.0</version>
+    <date>2021-12-17T12:41:03Z</date>
+    <groups>
+        <group>
+            <name>Templates</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Template Printer HP</template>
+            <name>Template Printer HP</name>
+            <groups>
+                <group>
+                    <name>Templates</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>HP Printer</name>
+                </application>
+            </applications>
+            <items>
+                <item>
+                    <name>prtMarkerLifeCount.1.1</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.2.1.43.10.2.1.4.1.1</snmp_oid>
+                    <key>prtMarkerLifeCount.1.1</key>
+                    <delay>3600</delay>
+                    <trends>1825d</trends>
+                    <applications>
+                        <application>
+                            <name>HP Printer</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>prtMarkerPowerOnCount.1.1</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.2.1.43.10.2.1.5.1.1</snmp_oid>
+                    <key>prtMarkerPowerOnCount.1.1</key>
+                    <delay>3600</delay>
+                    <trends>1825d</trends>
+                    <status>DISABLED</status>
+                    <applications>
+                        <application>
+                            <name>HP Printer</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>prtMarkerSuppliesDescription.1.1</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.2.1.43.11.1.1.6.1.1</snmp_oid>
+                    <key>prtMarkerSuppliesDescription.1.1</key>
+                    <delay>86400</delay>
+                    <trends>0</trends>
+                    <value_type>CHAR</value_type>
+                    <applications>
+                        <application>
+                            <name>HP Printer</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>prtMarkerSuppliesLevel.1.1</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.2.1.43.11.1.1.9.1.1</snmp_oid>
+                    <key>prtMarkerSuppliesLevel.1.1</key>
+                    <delay>600</delay>
+                    <trends>1825d</trends>
+                    <applications>
+                        <application>
+                            <name>HP Printer</name>
+                        </application>
+                    </applications>
+                    <triggers>
+                        <trigger>
+                            <expression>{last(0)}&lt;1000</expression>
+                            <name>Toner black low on printer in value {HOSTNAME}</name>
+                            <status>DISABLED</status>
+                            <priority>WARNING</priority>
+                            <description>Some SNMP devices post bad value of (Max Capacity)</description>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>prtMarkerSuppliesMaxCapacity.1.1</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.2.1.43.11.1.1.8.1.1</snmp_oid>
+                    <key>prtMarkerSuppliesMaxCapacity.1.1</key>
+                    <delay>14400</delay>
+                    <trends>1825d</trends>
+                    <applications>
+                        <application>
+                            <name>HP Printer</name>
+                        </application>
+                    </applications>
+                </item>
+            </items>
+            <tags>
+                <tag>
+                    <tag>Device</tag>
+                    <value>printer</value>
+                </tag>
+                <tag>
+                    <tag>Type</tag>
+                    <value>BW</value>
+                </tag>
+                <tag>
+                    <tag>Vendor</tag>
+                    <value>HP</value>
+                </tag>
+            </tags>
+        </template>
+    </templates>
+    <triggers>
+        <trigger>
+            <expression>(({Template Printer HP:prtMarkerSuppliesLevel.1.1.last(0)} / {Template Printer HP:prtMarkerSuppliesMaxCapacity.1.1.last(0)})*100) &lt; 5</expression>
+            <name>Toner black low on printer in % {HOSTNAME}</name>
+            <priority>WARNING</priority>
+            <tags>
+                <tag>
+                    <tag>Status</tag>
+                    <value>toner</value>
+                </tag>
+            </tags>
+        </trigger>
+    </triggers>
+    <graphs>
+        <graph>
+            <name>Pocet vytisků</name>
+            <graph_items>
+                <graph_item>
+                    <drawtype>GRADIENT_LINE</drawtype>
+                    <color>0000CC</color>
+                    <item>
+                        <host>Template Printer HP</host>
+                        <key>prtMarkerLifeCount.1.1</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <name>Stav Toneru</name>
+            <graph_items>
+                <graph_item>
+                    <drawtype>GRADIENT_LINE</drawtype>
+                    <color>3333FF</color>
+                    <item>
+                        <host>Template Printer HP</host>
+                        <key>prtMarkerSuppliesLevel.1.1</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+    </graphs>
+</zabbix_export>
