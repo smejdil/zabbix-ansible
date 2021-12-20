@@ -1,801 +1,376 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<zabbix_export version="1.0" date="28.11.11" time="20.08">
-  <hosts>
-    <host name="Template_IP_SMART_BOARD">
-      <proxy_hostid>0</proxy_hostid>
-      <useip>1</useip>
-      <dns></dns>
-      <ip>127.0.0.1</ip>
-      <port>10050</port>
-      <status>3</status>
-      <useipmi>0</useipmi>
-      <ipmi_ip>127.0.0.1</ipmi_ip>
-      <ipmi_port>623</ipmi_port>
-      <ipmi_authtype>0</ipmi_authtype>
-      <ipmi_privilege>2</ipmi_privilege>
-      <ipmi_username></ipmi_username>
-      <ipmi_password></ipmi_password>
-      <groups>
-        <group>Templates</group>
-      </groups>
-      <triggers/>
-      <items>
-        <item type="1" key="C1_ticks" value_type="4">
-          <description>C1 ticks</description>
-          <ipmi_sensor></ipmi_sensor>
-          <delay>900</delay>
-          <history>90</history>
-          <trends>365</trends>
-          <status>0</status>
-          <data_type>0</data_type>
-          <units></units>
-          <multiplier>0</multiplier>
-          <delta>0</delta>
-          <formula>0</formula>
-          <lastlogsize>0</lastlogsize>
-          <logtimefmt></logtimefmt>
-          <delay_flex></delay_flex>
-          <authtype>0</authtype>
-          <username></username>
-          <password></password>
-          <publickey></publickey>
-          <privatekey></privatekey>
-          <params></params>
-          <trapper_hosts></trapper_hosts>
-          <snmp_community>public</snmp_community>
-          <snmp_oid>0.1.3.6.1.4.1.21287.16.16.0</snmp_oid>
-          <snmp_port>161</snmp_port>
-          <snmpv3_securityname></snmpv3_securityname>
-          <snmpv3_securitylevel>0</snmpv3_securitylevel>
-          <snmpv3_authpassphrase></snmpv3_authpassphrase>
-          <snmpv3_privpassphrase></snmpv3_privpassphrase>
-          <valuemapid>0</valuemapid>
-          <applications>
-            <application>IP SMART BOARD</application>
-          </applications>
-        </item>
-        <item type="1" key="C2_ticks" value_type="4">
-          <description>C2 ticks</description>
-          <ipmi_sensor></ipmi_sensor>
-          <delay>900</delay>
-          <history>90</history>
-          <trends>365</trends>
-          <status>0</status>
-          <data_type>0</data_type>
-          <units></units>
-          <multiplier>0</multiplier>
-          <delta>0</delta>
-          <formula>0</formula>
-          <lastlogsize>0</lastlogsize>
-          <logtimefmt></logtimefmt>
-          <delay_flex></delay_flex>
-          <authtype>0</authtype>
-          <username></username>
-          <password></password>
-          <publickey></publickey>
-          <privatekey></privatekey>
-          <params></params>
-          <trapper_hosts></trapper_hosts>
-          <snmp_community>public</snmp_community>
-          <snmp_oid>0.1.3.6.1.4.1.21287.16.17.0</snmp_oid>
-          <snmp_port>161</snmp_port>
-          <snmpv3_securityname></snmpv3_securityname>
-          <snmpv3_securitylevel>0</snmpv3_securitylevel>
-          <snmpv3_authpassphrase></snmpv3_authpassphrase>
-          <snmpv3_privpassphrase></snmpv3_privpassphrase>
-          <valuemapid>0</valuemapid>
-          <applications>
-            <application>IP SMART BOARD</application>
-          </applications>
-        </item>
-        <item type="1" key="DeviceName" value_type="4">
-          <description>Device name</description>
-          <ipmi_sensor></ipmi_sensor>
-          <delay>60480</delay>
-          <history>90</history>
-          <trends>365</trends>
-          <status>0</status>
-          <data_type>0</data_type>
-          <units></units>
-          <multiplier>0</multiplier>
-          <delta>0</delta>
-          <formula>0</formula>
-          <lastlogsize>0</lastlogsize>
-          <logtimefmt></logtimefmt>
-          <delay_flex></delay_flex>
-          <authtype>0</authtype>
-          <username></username>
-          <password></password>
-          <publickey></publickey>
-          <privatekey></privatekey>
-          <params></params>
-          <trapper_hosts></trapper_hosts>
-          <snmp_community>public</snmp_community>
-          <snmp_oid>0.1.3.6.1.4.1.21287.16.15.0</snmp_oid>
-          <snmp_port>161</snmp_port>
-          <snmpv3_securityname></snmpv3_securityname>
-          <snmpv3_securitylevel>0</snmpv3_securitylevel>
-          <snmpv3_authpassphrase></snmpv3_authpassphrase>
-          <snmpv3_privpassphrase></snmpv3_privpassphrase>
-          <valuemapid>0</valuemapid>
-          <applications>
-            <application>IP SMART BOARD</application>
-          </applications>
-        </item>
-        <item type="1" key="DigitalInput" value_type="3">
-          <description>Digital input</description>
-          <ipmi_sensor></ipmi_sensor>
-          <delay>60</delay>
-          <history>90</history>
-          <trends>365</trends>
-          <status>0</status>
-          <data_type>0</data_type>
-          <units></units>
-          <multiplier>0</multiplier>
-          <delta>0</delta>
-          <formula>0</formula>
-          <lastlogsize>0</lastlogsize>
-          <logtimefmt></logtimefmt>
-          <delay_flex></delay_flex>
-          <authtype>0</authtype>
-          <username></username>
-          <password></password>
-          <publickey></publickey>
-          <privatekey></privatekey>
-          <params></params>
-          <trapper_hosts></trapper_hosts>
-          <snmp_community>public</snmp_community>
-          <snmp_oid>0.1.3.6.1.4.1.21287.16.5.0</snmp_oid>
-          <snmp_port>161</snmp_port>
-          <snmpv3_securityname></snmpv3_securityname>
-          <snmpv3_securitylevel>0</snmpv3_securitylevel>
-          <snmpv3_authpassphrase></snmpv3_authpassphrase>
-          <snmpv3_privpassphrase></snmpv3_privpassphrase>
-          <valuemapid>0</valuemapid>
-          <applications>
-            <application>IP SMART BOARD</application>
-          </applications>
-        </item>
-        <item type="1" key="Location" value_type="4">
-          <description>Location</description>
-          <ipmi_sensor></ipmi_sensor>
-          <delay>60480</delay>
-          <history>90</history>
-          <trends>365</trends>
-          <status>0</status>
-          <data_type>0</data_type>
-          <units></units>
-          <multiplier>0</multiplier>
-          <delta>0</delta>
-          <formula>0</formula>
-          <lastlogsize>0</lastlogsize>
-          <logtimefmt></logtimefmt>
-          <delay_flex></delay_flex>
-          <authtype>0</authtype>
-          <username></username>
-          <password></password>
-          <publickey></publickey>
-          <privatekey></privatekey>
-          <params></params>
-          <trapper_hosts></trapper_hosts>
-          <snmp_community>public</snmp_community>
-          <snmp_oid>0.1.3.6.1.4.1.21287.16.14.0</snmp_oid>
-          <snmp_port>161</snmp_port>
-          <snmpv3_securityname></snmpv3_securityname>
-          <snmpv3_securitylevel>0</snmpv3_securitylevel>
-          <snmpv3_authpassphrase></snmpv3_authpassphrase>
-          <snmpv3_privpassphrase></snmpv3_privpassphrase>
-          <valuemapid>0</valuemapid>
-          <applications>
-            <application>IP SMART BOARD</application>
-          </applications>
-        </item>
-        <item type="1" key="MAX_SysTemperature" value_type="0">
-          <description>MAX Sys temperature</description>
-          <ipmi_sensor></ipmi_sensor>
-          <delay>300</delay>
-          <history>90</history>
-          <trends>365</trends>
-          <status>0</status>
-          <data_type>0</data_type>
-          <units>°C</units>
-          <multiplier>0</multiplier>
-          <delta>0</delta>
-          <formula>0</formula>
-          <lastlogsize>0</lastlogsize>
-          <logtimefmt></logtimefmt>
-          <delay_flex></delay_flex>
-          <authtype>0</authtype>
-          <username></username>
-          <password></password>
-          <publickey></publickey>
-          <privatekey></privatekey>
-          <params></params>
-          <trapper_hosts></trapper_hosts>
-          <snmp_community>public</snmp_community>
-          <snmp_oid>0.1.3.6.1.4.1.21287.16.12.0</snmp_oid>
-          <snmp_port>161</snmp_port>
-          <snmpv3_securityname></snmpv3_securityname>
-          <snmpv3_securitylevel>0</snmpv3_securitylevel>
-          <snmpv3_authpassphrase></snmpv3_authpassphrase>
-          <snmpv3_privpassphrase></snmpv3_privpassphrase>
-          <valuemapid>0</valuemapid>
-          <applications>
-            <application>IP SMART BOARD</application>
-          </applications>
-        </item>
-        <item type="1" key="MAX_Temperature1" value_type="0">
-          <description>MAX Temperature 1</description>
-          <ipmi_sensor></ipmi_sensor>
-          <delay>300</delay>
-          <history>90</history>
-          <trends>365</trends>
-          <status>0</status>
-          <data_type>0</data_type>
-          <units>°C</units>
-          <multiplier>0</multiplier>
-          <delta>0</delta>
-          <formula>0</formula>
-          <lastlogsize>0</lastlogsize>
-          <logtimefmt></logtimefmt>
-          <delay_flex></delay_flex>
-          <authtype>0</authtype>
-          <username></username>
-          <password></password>
-          <publickey></publickey>
-          <privatekey></privatekey>
-          <params></params>
-          <trapper_hosts></trapper_hosts>
-          <snmp_community>public</snmp_community>
-          <snmp_oid>0.1.3.6.1.4.1.21287.16.8.0</snmp_oid>
-          <snmp_port>161</snmp_port>
-          <snmpv3_securityname></snmpv3_securityname>
-          <snmpv3_securitylevel>0</snmpv3_securitylevel>
-          <snmpv3_authpassphrase></snmpv3_authpassphrase>
-          <snmpv3_privpassphrase></snmpv3_privpassphrase>
-          <valuemapid>0</valuemapid>
-          <applications>
-            <application>IP SMART BOARD</application>
-          </applications>
-        </item>
-        <item type="1" key="MAX_Temperature2" value_type="0">
-          <description>MAX Temperature 2</description>
-          <ipmi_sensor></ipmi_sensor>
-          <delay>300</delay>
-          <history>90</history>
-          <trends>365</trends>
-          <status>0</status>
-          <data_type>0</data_type>
-          <units>°C</units>
-          <multiplier>0</multiplier>
-          <delta>0</delta>
-          <formula>0</formula>
-          <lastlogsize>0</lastlogsize>
-          <logtimefmt></logtimefmt>
-          <delay_flex></delay_flex>
-          <authtype>0</authtype>
-          <username></username>
-          <password></password>
-          <publickey></publickey>
-          <privatekey></privatekey>
-          <params></params>
-          <trapper_hosts></trapper_hosts>
-          <snmp_community>public</snmp_community>
-          <snmp_oid>0.1.3.6.1.4.1.21287.16.10.0</snmp_oid>
-          <snmp_port>161</snmp_port>
-          <snmpv3_securityname></snmpv3_securityname>
-          <snmpv3_securitylevel>0</snmpv3_securitylevel>
-          <snmpv3_authpassphrase></snmpv3_authpassphrase>
-          <snmpv3_privpassphrase></snmpv3_privpassphrase>
-          <valuemapid>0</valuemapid>
-          <applications>
-            <application>IP SMART BOARD</application>
-          </applications>
-        </item>
-        <item type="1" key="MAX_Voltage" value_type="0">
-          <description>MAX Voltage</description>
-          <ipmi_sensor></ipmi_sensor>
-          <delay>300</delay>
-          <history>90</history>
-          <trends>365</trends>
-          <status>0</status>
-          <data_type>0</data_type>
-          <units>V</units>
-          <multiplier>0</multiplier>
-          <delta>0</delta>
-          <formula>0</formula>
-          <lastlogsize>0</lastlogsize>
-          <logtimefmt></logtimefmt>
-          <delay_flex></delay_flex>
-          <authtype>0</authtype>
-          <username></username>
-          <password></password>
-          <publickey></publickey>
-          <privatekey></privatekey>
-          <params></params>
-          <trapper_hosts></trapper_hosts>
-          <snmp_community>public</snmp_community>
-          <snmp_oid>0.1.3.6.1.4.1.21287.16.13.0</snmp_oid>
-          <snmp_port>161</snmp_port>
-          <snmpv3_securityname></snmpv3_securityname>
-          <snmpv3_securitylevel>0</snmpv3_securitylevel>
-          <snmpv3_authpassphrase></snmpv3_authpassphrase>
-          <snmpv3_privpassphrase></snmpv3_privpassphrase>
-          <valuemapid>0</valuemapid>
-          <applications>
-            <application>IP SMART BOARD</application>
-          </applications>
-        </item>
-        <item type="1" key="MIN_SysTemperature" value_type="0">
-          <description>MIN Sys temperature</description>
-          <ipmi_sensor></ipmi_sensor>
-          <delay>300</delay>
-          <history>90</history>
-          <trends>365</trends>
-          <status>0</status>
-          <data_type>0</data_type>
-          <units>°C</units>
-          <multiplier>0</multiplier>
-          <delta>0</delta>
-          <formula>0</formula>
-          <lastlogsize>0</lastlogsize>
-          <logtimefmt></logtimefmt>
-          <delay_flex></delay_flex>
-          <authtype>0</authtype>
-          <username></username>
-          <password></password>
-          <publickey></publickey>
-          <privatekey></privatekey>
-          <params></params>
-          <trapper_hosts></trapper_hosts>
-          <snmp_community>public</snmp_community>
-          <snmp_oid>0.1.3.6.1.4.1.21287.16.11.0</snmp_oid>
-          <snmp_port>161</snmp_port>
-          <snmpv3_securityname></snmpv3_securityname>
-          <snmpv3_securitylevel>0</snmpv3_securitylevel>
-          <snmpv3_authpassphrase></snmpv3_authpassphrase>
-          <snmpv3_privpassphrase></snmpv3_privpassphrase>
-          <valuemapid>0</valuemapid>
-          <applications>
-            <application>IP SMART BOARD</application>
-          </applications>
-        </item>
-        <item type="1" key="MIN_Temperature1" value_type="0">
-          <description>MIN Temperature 1</description>
-          <ipmi_sensor></ipmi_sensor>
-          <delay>300</delay>
-          <history>90</history>
-          <trends>365</trends>
-          <status>0</status>
-          <data_type>0</data_type>
-          <units>°C</units>
-          <multiplier>0</multiplier>
-          <delta>0</delta>
-          <formula>0</formula>
-          <lastlogsize>0</lastlogsize>
-          <logtimefmt></logtimefmt>
-          <delay_flex></delay_flex>
-          <authtype>0</authtype>
-          <username></username>
-          <password></password>
-          <publickey></publickey>
-          <privatekey></privatekey>
-          <params></params>
-          <trapper_hosts></trapper_hosts>
-          <snmp_community>public</snmp_community>
-          <snmp_oid>0.1.3.6.1.4.1.21287.16.7.0</snmp_oid>
-          <snmp_port>161</snmp_port>
-          <snmpv3_securityname></snmpv3_securityname>
-          <snmpv3_securitylevel>0</snmpv3_securitylevel>
-          <snmpv3_authpassphrase></snmpv3_authpassphrase>
-          <snmpv3_privpassphrase></snmpv3_privpassphrase>
-          <valuemapid>0</valuemapid>
-          <applications>
-            <application>IP SMART BOARD</application>
-          </applications>
-        </item>
-        <item type="1" key="MIN_Temperature2" value_type="0">
-          <description>MIN Temperature 2</description>
-          <ipmi_sensor></ipmi_sensor>
-          <delay>300</delay>
-          <history>90</history>
-          <trends>365</trends>
-          <status>0</status>
-          <data_type>0</data_type>
-          <units>°C</units>
-          <multiplier>0</multiplier>
-          <delta>0</delta>
-          <formula>0</formula>
-          <lastlogsize>0</lastlogsize>
-          <logtimefmt></logtimefmt>
-          <delay_flex></delay_flex>
-          <authtype>0</authtype>
-          <username></username>
-          <password></password>
-          <publickey></publickey>
-          <privatekey></privatekey>
-          <params></params>
-          <trapper_hosts></trapper_hosts>
-          <snmp_community>public</snmp_community>
-          <snmp_oid>0.1.3.6.1.4.1.21287.16.9.0</snmp_oid>
-          <snmp_port>161</snmp_port>
-          <snmpv3_securityname></snmpv3_securityname>
-          <snmpv3_securitylevel>0</snmpv3_securitylevel>
-          <snmpv3_authpassphrase></snmpv3_authpassphrase>
-          <snmpv3_privpassphrase></snmpv3_privpassphrase>
-          <valuemapid>0</valuemapid>
-          <applications>
-            <application>IP SMART BOARD</application>
-          </applications>
-        </item>
-        <item type="1" key="OutputStatus" value_type="3">
-          <description>Output status</description>
-          <ipmi_sensor></ipmi_sensor>
-          <delay>60</delay>
-          <history>90</history>
-          <trends>365</trends>
-          <status>0</status>
-          <data_type>0</data_type>
-          <units></units>
-          <multiplier>0</multiplier>
-          <delta>0</delta>
-          <formula>0</formula>
-          <lastlogsize>0</lastlogsize>
-          <logtimefmt></logtimefmt>
-          <delay_flex></delay_flex>
-          <authtype>0</authtype>
-          <username></username>
-          <password></password>
-          <publickey></publickey>
-          <privatekey></privatekey>
-          <params></params>
-          <trapper_hosts></trapper_hosts>
-          <snmp_community>public</snmp_community>
-          <snmp_oid>0.1.3.6.1.4.1.21287.16.3.0</snmp_oid>
-          <snmp_port>161</snmp_port>
-          <snmpv3_securityname></snmpv3_securityname>
-          <snmpv3_securitylevel>0</snmpv3_securitylevel>
-          <snmpv3_authpassphrase></snmpv3_authpassphrase>
-          <snmpv3_privpassphrase></snmpv3_privpassphrase>
-          <valuemapid>100100000000001</valuemapid>
-          <applications>
-            <application>IP SMART BOARD</application>
-          </applications>
-        </item>
-        <item type="1" key="RelayToReswitchTime" value_type="3">
-          <description>Relay to reswitch time</description>
-          <ipmi_sensor></ipmi_sensor>
-          <delay>3600</delay>
-          <history>90</history>
-          <trends>365</trends>
-          <status>0</status>
-          <data_type>0</data_type>
-          <units></units>
-          <multiplier>0</multiplier>
-          <delta>0</delta>
-          <formula>0</formula>
-          <lastlogsize>0</lastlogsize>
-          <logtimefmt></logtimefmt>
-          <delay_flex></delay_flex>
-          <authtype>0</authtype>
-          <username></username>
-          <password></password>
-          <publickey></publickey>
-          <privatekey></privatekey>
-          <params></params>
-          <trapper_hosts></trapper_hosts>
-          <snmp_community>public</snmp_community>
-          <snmp_oid>0.1.3.6.1.4.1.21287.16.18.0</snmp_oid>
-          <snmp_port>161</snmp_port>
-          <snmpv3_securityname></snmpv3_securityname>
-          <snmpv3_securitylevel>0</snmpv3_securitylevel>
-          <snmpv3_authpassphrase></snmpv3_authpassphrase>
-          <snmpv3_privpassphrase></snmpv3_privpassphrase>
-          <valuemapid>100100000000001</valuemapid>
-          <applications>
-            <application>IP SMART BOARD</application>
-          </applications>
-        </item>
-        <item type="1" key="SystemTemperature" value_type="0">
-          <description>System temperature</description>
-          <ipmi_sensor></ipmi_sensor>
-          <delay>15</delay>
-          <history>90</history>
-          <trends>365</trends>
-          <status>0</status>
-          <data_type>0</data_type>
-          <units>°C</units>
-          <multiplier>0</multiplier>
-          <delta>0</delta>
-          <formula>0</formula>
-          <lastlogsize>0</lastlogsize>
-          <logtimefmt></logtimefmt>
-          <delay_flex></delay_flex>
-          <authtype>0</authtype>
-          <username></username>
-          <password></password>
-          <publickey></publickey>
-          <privatekey></privatekey>
-          <params></params>
-          <trapper_hosts></trapper_hosts>
-          <snmp_community>public</snmp_community>
-          <snmp_oid>0.1.3.6.1.4.1.21287.16.4.0</snmp_oid>
-          <snmp_port>161</snmp_port>
-          <snmpv3_securityname></snmpv3_securityname>
-          <snmpv3_securitylevel>0</snmpv3_securitylevel>
-          <snmpv3_authpassphrase></snmpv3_authpassphrase>
-          <snmpv3_privpassphrase></snmpv3_privpassphrase>
-          <valuemapid>0</valuemapid>
-          <applications>
-            <application>IP SMART BOARD</application>
-          </applications>
-        </item>
-        <item type="1" key="TemperatureOnInput1" value_type="0">
-          <description>Temperature on input1</description>
-          <ipmi_sensor></ipmi_sensor>
-          <delay>15</delay>
-          <history>90</history>
-          <trends>365</trends>
-          <status>0</status>
-          <data_type>0</data_type>
-          <units>°C</units>
-          <multiplier>0</multiplier>
-          <delta>0</delta>
-          <formula>0</formula>
-          <lastlogsize>0</lastlogsize>
-          <logtimefmt></logtimefmt>
-          <delay_flex></delay_flex>
-          <authtype>0</authtype>
-          <username></username>
-          <password></password>
-          <publickey></publickey>
-          <privatekey></privatekey>
-          <params></params>
-          <trapper_hosts></trapper_hosts>
-          <snmp_community>public</snmp_community>
-          <snmp_oid>0.1.3.6.1.4.1.21287.16.1.0</snmp_oid>
-          <snmp_port>161</snmp_port>
-          <snmpv3_securityname></snmpv3_securityname>
-          <snmpv3_securitylevel>0</snmpv3_securitylevel>
-          <snmpv3_authpassphrase></snmpv3_authpassphrase>
-          <snmpv3_privpassphrase></snmpv3_privpassphrase>
-          <valuemapid>0</valuemapid>
-          <applications>
-            <application>IP SMART BOARD</application>
-          </applications>
-        </item>
-        <item type="1" key="TemperatureOnInput2" value_type="0">
-          <description>Temperature on input2</description>
-          <ipmi_sensor></ipmi_sensor>
-          <delay>15</delay>
-          <history>90</history>
-          <trends>365</trends>
-          <status>0</status>
-          <data_type>0</data_type>
-          <units>°C</units>
-          <multiplier>0</multiplier>
-          <delta>0</delta>
-          <formula>0</formula>
-          <lastlogsize>0</lastlogsize>
-          <logtimefmt></logtimefmt>
-          <delay_flex></delay_flex>
-          <authtype>0</authtype>
-          <username></username>
-          <password></password>
-          <publickey></publickey>
-          <privatekey></privatekey>
-          <params></params>
-          <trapper_hosts></trapper_hosts>
-          <snmp_community>public</snmp_community>
-          <snmp_oid>0.1.3.6.1.4.1.21287.16.2.0</snmp_oid>
-          <snmp_port>161</snmp_port>
-          <snmpv3_securityname></snmpv3_securityname>
-          <snmpv3_securitylevel>0</snmpv3_securitylevel>
-          <snmpv3_authpassphrase></snmpv3_authpassphrase>
-          <snmpv3_privpassphrase></snmpv3_privpassphrase>
-          <valuemapid>0</valuemapid>
-          <applications>
-            <application>IP SMART BOARD</application>
-          </applications>
-        </item>
-        <item type="1" key="VoltageInputValue" value_type="0">
-          <description>Voltage input value</description>
-          <ipmi_sensor></ipmi_sensor>
-          <delay>60</delay>
-          <history>90</history>
-          <trends>365</trends>
-          <status>0</status>
-          <data_type>0</data_type>
-          <units></units>
-          <multiplier>0</multiplier>
-          <delta>0</delta>
-          <formula>0</formula>
-          <lastlogsize>0</lastlogsize>
-          <logtimefmt></logtimefmt>
-          <delay_flex></delay_flex>
-          <authtype>0</authtype>
-          <username></username>
-          <password></password>
-          <publickey></publickey>
-          <privatekey></privatekey>
-          <params></params>
-          <trapper_hosts></trapper_hosts>
-          <snmp_community>public</snmp_community>
-          <snmp_oid>0.1.3.6.1.4.1.21287.16.6.0</snmp_oid>
-          <snmp_port>161</snmp_port>
-          <snmpv3_securityname></snmpv3_securityname>
-          <snmpv3_securitylevel>0</snmpv3_securitylevel>
-          <snmpv3_authpassphrase></snmpv3_authpassphrase>
-          <snmpv3_privpassphrase></snmpv3_privpassphrase>
-          <valuemapid>0</valuemapid>
-          <applications>
-            <application>IP SMART BOARD</application>
-          </applications>
-        </item>
-      </items>
-      <templates/>
-      <graphs>
-        <graph name="System temperature" width="900" height="200">
-          <ymin_type>0</ymin_type>
-          <ymax_type>0</ymax_type>
-          <ymin_item_key></ymin_item_key>
-          <ymax_item_key></ymax_item_key>
-          <show_work_period>1</show_work_period>
-          <show_triggers>0</show_triggers>
-          <graphtype>0</graphtype>
-          <yaxismin>0.0000</yaxismin>
-          <yaxismax>100.0000</yaxismax>
-          <show_legend>0</show_legend>
-          <show_3d>0</show_3d>
-          <percent_left>0.0000</percent_left>
-          <percent_right>0.0000</percent_right>
-          <graph_elements>
-            <graph_element item="Template_IP_SMART_BOARD:MAX_SysTemperature">
-              <drawtype>0</drawtype>
-              <sortorder>0</sortorder>
-              <color>EE0000</color>
-              <yaxisside>0</yaxisside>
-              <calc_fnc>2</calc_fnc>
-              <type>0</type>
-              <periods_cnt>5</periods_cnt>
-            </graph_element>
-            <graph_element item="Template_IP_SMART_BOARD:MIN_SysTemperature">
-              <drawtype>0</drawtype>
-              <sortorder>1</sortorder>
-              <color>009900</color>
-              <yaxisside>0</yaxisside>
-              <calc_fnc>2</calc_fnc>
-              <type>0</type>
-              <periods_cnt>5</periods_cnt>
-            </graph_element>
-            <graph_element item="Template_IP_SMART_BOARD:SystemTemperature">
-              <drawtype>5</drawtype>
-              <sortorder>2</sortorder>
-              <color>0000EE</color>
-              <yaxisside>0</yaxisside>
-              <calc_fnc>2</calc_fnc>
-              <type>0</type>
-              <periods_cnt>5</periods_cnt>
-            </graph_element>
-          </graph_elements>
+<zabbix_export>
+    <version>5.0</version>
+    <date>2021-12-20T07:50:09Z</date>
+    <groups>
+        <group>
+            <name>Templates</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Template IP SMART BOARD</template>
+            <name>Template IP SMART BOARD</name>
+            <description>http://www.mikrovlny.cz/cz/produkt/64&#13;
+http://www.mikrovlny.cz/content/file/manualy/IPBOARD.pdf</description>
+            <groups>
+                <group>
+                    <name>Templates</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>IP SMART BOARD</name>
+                </application>
+            </applications>
+            <items>
+                <item>
+                    <name>C1 ticks</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>0.1.3.6.1.4.1.21287.16.16.0</snmp_oid>
+                    <key>C1_ticks</key>
+                    <delay>10m</delay>
+                    <applications>
+                        <application>
+                            <name>IP SMART BOARD</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>C2_ticks</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>0.1.3.6.1.4.1.21287.16.17.0</snmp_oid>
+                    <key>C2_ticks</key>
+                    <delay>10m</delay>
+                    <applications>
+                        <application>
+                            <name>IP SMART BOARD</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Device name</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>0.1.3.6.1.4.1.21287.16.15.0</snmp_oid>
+                    <key>DeviceName</key>
+                    <delay>1d</delay>
+                    <trends>0</trends>
+                    <value_type>CHAR</value_type>
+                    <applications>
+                        <application>
+                            <name>IP SMART BOARD</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Digital input</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>0.1.3.6.1.4.1.21287.16.5.0</snmp_oid>
+                    <key>DigitalInput</key>
+                    <applications>
+                        <application>
+                            <name>IP SMART BOARD</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Location</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>0.1.3.6.1.4.1.21287.16.14.0</snmp_oid>
+                    <key>Location</key>
+                    <delay>1d</delay>
+                    <trends>0</trends>
+                    <value_type>CHAR</value_type>
+                    <applications>
+                        <application>
+                            <name>IP SMART BOARD</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>MAX Sys temperature</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>0.1.3.6.1.4.1.21287.16.12.0</snmp_oid>
+                    <key>MAX_SysTemperature</key>
+                    <delay>15m</delay>
+                    <value_type>FLOAT</value_type>
+                    <units>°C</units>
+                    <applications>
+                        <application>
+                            <name>IP SMART BOARD</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>MAX Temperature 1</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>0.1.3.6.1.4.1.21287.16.8.0</snmp_oid>
+                    <key>MAX_Temperature1</key>
+                    <delay>15m</delay>
+                    <value_type>FLOAT</value_type>
+                    <units>°C</units>
+                    <applications>
+                        <application>
+                            <name>IP SMART BOARD</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>MAX Temperature 2</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>0.1.3.6.1.4.1.21287.16.10.0</snmp_oid>
+                    <key>MAX_Temperature2</key>
+                    <delay>15m</delay>
+                    <value_type>FLOAT</value_type>
+                    <units>°C</units>
+                    <applications>
+                        <application>
+                            <name>IP SMART BOARD</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>MAX Voltage</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>0.1.3.6.1.4.1.21287.16.13.0</snmp_oid>
+                    <key>MAX_Voltage</key>
+                    <delay>15m</delay>
+                    <value_type>FLOAT</value_type>
+                    <units>V</units>
+                    <applications>
+                        <application>
+                            <name>IP SMART BOARD</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>MIN Sys temperature</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>0.1.3.6.1.4.1.21287.16.11.0</snmp_oid>
+                    <key>MIN_SysTemperature</key>
+                    <delay>15m</delay>
+                    <value_type>FLOAT</value_type>
+                    <units>°C</units>
+                    <applications>
+                        <application>
+                            <name>IP SMART BOARD</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>MIN Temperature 1</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>0.1.3.6.1.4.1.21287.16.7.0</snmp_oid>
+                    <key>MIN_Temperature1</key>
+                    <delay>15m</delay>
+                    <value_type>FLOAT</value_type>
+                    <units>°C</units>
+                    <applications>
+                        <application>
+                            <name>IP SMART BOARD</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>MIN Temperature 2</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>0.1.3.6.1.4.1.21287.16.9.0</snmp_oid>
+                    <key>MIN_Temperature2</key>
+                    <delay>15m</delay>
+                    <value_type>FLOAT</value_type>
+                    <units>°C</units>
+                    <applications>
+                        <application>
+                            <name>IP SMART BOARD</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Output status</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>0.1.3.6.1.4.1.21287.16.5.0</snmp_oid>
+                    <key>OutputStatus</key>
+                    <applications>
+                        <application>
+                            <name>IP SMART BOARD</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Relay to reswitch time</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>0.1.3.6.1.4.1.21287.16.18.0</snmp_oid>
+                    <key>RelayToReswitchTime</key>
+                    <applications>
+                        <application>
+                            <name>IP SMART BOARD</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>System temperature</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>0.1.3.6.1.4.1.21287.16.4.0</snmp_oid>
+                    <key>SystemTemperature</key>
+                    <trends>0</trends>
+                    <value_type>CHAR</value_type>
+                    <applications>
+                        <application>
+                            <name>IP SMART BOARD</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Temperature on input1</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>0.1.3.6.1.4.1.21287.16.1.0</snmp_oid>
+                    <key>TemperatureOnInput1</key>
+                    <delay>10</delay>
+                    <value_type>FLOAT</value_type>
+                    <units>°C</units>
+                    <applications>
+                        <application>
+                            <name>IP SMART BOARD</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Temperature on input2</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>0.1.3.6.1.4.1.21287.16.2.0</snmp_oid>
+                    <key>TemperatureOnInput2</key>
+                    <trends>0</trends>
+                    <value_type>CHAR</value_type>
+                    <applications>
+                        <application>
+                            <name>IP SMART BOARD</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Voltage input value</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>0.1.3.6.1.4.1.21287.16.6.0</snmp_oid>
+                    <key>VoltageInputValue</key>
+                    <delay>10</delay>
+                    <value_type>FLOAT</value_type>
+                    <units>V</units>
+                    <applications>
+                        <application>
+                            <name>IP SMART BOARD</name>
+                        </application>
+                    </applications>
+                </item>
+            </items>
+            <tags>
+                <tag>
+                    <tag>Device</tag>
+                    <value>IP SMART BOARD</value>
+                </tag>
+            </tags>
+        </template>
+    </templates>
+    <graphs>
+        <graph>
+            <name>Sys temperature</name>
+            <graph_items>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <drawtype>BOLD_LINE</drawtype>
+                    <color>FF0000</color>
+                    <item>
+                        <host>Template IP SMART BOARD</host>
+                        <key>MAX_SysTemperature</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>2</sortorder>
+                    <drawtype>BOLD_LINE</drawtype>
+                    <color>0040FF</color>
+                    <item>
+                        <host>Template IP SMART BOARD</host>
+                        <key>MIN_SysTemperature</key>
+                    </item>
+                </graph_item>
+            </graph_items>
         </graph>
-        <graph name="Temperature on input1" width="900" height="200">
-          <ymin_type>0</ymin_type>
-          <ymax_type>0</ymax_type>
-          <ymin_item_key></ymin_item_key>
-          <ymax_item_key></ymax_item_key>
-          <show_work_period>1</show_work_period>
-          <show_triggers>0</show_triggers>
-          <graphtype>0</graphtype>
-          <yaxismin>0.0000</yaxismin>
-          <yaxismax>100.0000</yaxismax>
-          <show_legend>0</show_legend>
-          <show_3d>0</show_3d>
-          <percent_left>0.0000</percent_left>
-          <percent_right>0.0000</percent_right>
-          <graph_elements>
-            <graph_element item="Template_IP_SMART_BOARD:MAX_Temperature1">
-              <drawtype>0</drawtype>
-              <sortorder>0</sortorder>
-              <color>EE0000</color>
-              <yaxisside>0</yaxisside>
-              <calc_fnc>2</calc_fnc>
-              <type>0</type>
-              <periods_cnt>5</periods_cnt>
-            </graph_element>
-            <graph_element item="Template_IP_SMART_BOARD:MIN_Temperature1">
-              <drawtype>0</drawtype>
-              <sortorder>1</sortorder>
-              <color>009900</color>
-              <yaxisside>0</yaxisside>
-              <calc_fnc>2</calc_fnc>
-              <type>0</type>
-              <periods_cnt>5</periods_cnt>
-            </graph_element>
-            <graph_element item="Template_IP_SMART_BOARD:TemperatureOnInput1">
-              <drawtype>5</drawtype>
-              <sortorder>2</sortorder>
-              <color>0000EE</color>
-              <yaxisside>0</yaxisside>
-              <calc_fnc>2</calc_fnc>
-              <type>0</type>
-              <periods_cnt>5</periods_cnt>
-            </graph_element>
-          </graph_elements>
+        <graph>
+            <name>Temperature1</name>
+            <graph_items>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <drawtype>BOLD_LINE</drawtype>
+                    <color>FF0000</color>
+                    <item>
+                        <host>Template IP SMART BOARD</host>
+                        <key>MAX_Temperature1</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>2</sortorder>
+                    <drawtype>BOLD_LINE</drawtype>
+                    <color>BFFF00</color>
+                    <item>
+                        <host>Template IP SMART BOARD</host>
+                        <key>TemperatureOnInput1</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>3</sortorder>
+                    <drawtype>BOLD_LINE</drawtype>
+                    <color>0040FF</color>
+                    <item>
+                        <host>Template IP SMART BOARD</host>
+                        <key>MIN_Temperature1</key>
+                    </item>
+                </graph_item>
+            </graph_items>
         </graph>
-        <graph name="Temperature on input2" width="900" height="200">
-          <ymin_type>0</ymin_type>
-          <ymax_type>0</ymax_type>
-          <ymin_item_key></ymin_item_key>
-          <ymax_item_key></ymax_item_key>
-          <show_work_period>1</show_work_period>
-          <show_triggers>0</show_triggers>
-          <graphtype>0</graphtype>
-          <yaxismin>0.0000</yaxismin>
-          <yaxismax>100.0000</yaxismax>
-          <show_legend>0</show_legend>
-          <show_3d>0</show_3d>
-          <percent_left>0.0000</percent_left>
-          <percent_right>0.0000</percent_right>
-          <graph_elements>
-            <graph_element item="Template_IP_SMART_BOARD:MAX_Temperature2">
-              <drawtype>0</drawtype>
-              <sortorder>0</sortorder>
-              <color>EE0000</color>
-              <yaxisside>0</yaxisside>
-              <calc_fnc>2</calc_fnc>
-              <type>0</type>
-              <periods_cnt>5</periods_cnt>
-            </graph_element>
-            <graph_element item="Template_IP_SMART_BOARD:MIN_Temperature2">
-              <drawtype>0</drawtype>
-              <sortorder>1</sortorder>
-              <color>009900</color>
-              <yaxisside>0</yaxisside>
-              <calc_fnc>2</calc_fnc>
-              <type>0</type>
-              <periods_cnt>5</periods_cnt>
-            </graph_element>
-            <graph_element item="Template_IP_SMART_BOARD:TemperatureOnInput2">
-              <drawtype>5</drawtype>
-              <sortorder>2</sortorder>
-              <color>0000EE</color>
-              <yaxisside>0</yaxisside>
-              <calc_fnc>2</calc_fnc>
-              <type>0</type>
-              <periods_cnt>5</periods_cnt>
-            </graph_element>
-          </graph_elements>
+        <graph>
+            <name>Temperature2</name>
+            <graph_items>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <drawtype>BOLD_LINE</drawtype>
+                    <color>FF0000</color>
+                    <item>
+                        <host>Template IP SMART BOARD</host>
+                        <key>MAX_Temperature2</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>2</sortorder>
+                    <drawtype>BOLD_LINE</drawtype>
+                    <color>0040FF</color>
+                    <item>
+                        <host>Template IP SMART BOARD</host>
+                        <key>MIN_Temperature2</key>
+                    </item>
+                </graph_item>
+            </graph_items>
         </graph>
-        <graph name="Output status" width="900" height="200">
-          <ymin_type>0</ymin_type>
-          <ymax_type>0</ymax_type>
-          <ymin_item_key></ymin_item_key>
-          <ymax_item_key></ymax_item_key>
-          <show_work_period>1</show_work_period>
-          <show_triggers>0</show_triggers>
-          <graphtype>0</graphtype>
-          <yaxismin>0.0000</yaxismin>
-          <yaxismax>100.0000</yaxismax>
-          <show_legend>0</show_legend>
-          <show_3d>0</show_3d>
-          <percent_left>0.0000</percent_left>
-          <percent_right>0.0000</percent_right>
-          <graph_elements>
-            <graph_element item="Template_IP_SMART_BOARD:OutputStatus">
-              <drawtype>2</drawtype>
-              <sortorder>0</sortorder>
-              <color>EE0000</color>
-              <yaxisside>0</yaxisside>
-              <calc_fnc>2</calc_fnc>
-              <type>0</type>
-              <periods_cnt>5</periods_cnt>
-            </graph_element>
-          </graph_elements>
+        <graph>
+            <name>Voltage</name>
+            <graph_items>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <drawtype>BOLD_LINE</drawtype>
+                    <color>00FF00</color>
+                    <item>
+                        <host>Template IP SMART BOARD</host>
+                        <key>MAX_Voltage</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>2</sortorder>
+                    <drawtype>BOLD_LINE</drawtype>
+                    <color>FFFF00</color>
+                    <item>
+                        <host>Template IP SMART BOARD</host>
+                        <key>VoltageInputValue</key>
+                    </item>
+                </graph_item>
+            </graph_items>
         </graph>
-      </graphs>
-      <macros/>
-    </host>
-  </hosts>
-  <dependencies/>
+    </graphs>
 </zabbix_export>
