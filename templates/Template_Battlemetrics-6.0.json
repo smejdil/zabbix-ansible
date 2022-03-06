@@ -1,0 +1,440 @@
+{
+    "zabbix_export": {
+        "version": "6.0",
+        "date": "2022-03-06T11:23:36Z",
+        "groups": [
+            {
+                "uuid": "7df96b18c230490a9a0a9e2307226338",
+                "name": "Templates"
+            }
+        ],
+        "templates": [
+            {
+                "uuid": "d13d26c6bc4a4fe9a273c137c82d3575",
+                "template": "Template Battlemetrics",
+                "name": "Template Battlemetrics",
+                "description": "# Example\nhttps://www.battlemetrics.com/servers/valheim/14159400?playerCount=7D\n\n# JSON output\nhttps://api.battlemetrics.com/servers/14159400\n\n# Web Tools\nhttp://json.parser.online.fr\n\nhttps://jsonpath.com\n\nhttps://regex101.com",
+                "groups": [
+                    {
+                        "name": "Templates"
+                    }
+                ],
+                "items": [
+                    {
+                        "uuid": "5359c3be0be7486d994a1234397558ec",
+                        "name": "Battlemetrics: Get status",
+                        "type": "HTTP_AGENT",
+                        "key": "battlemetrics_get_status",
+                        "trends": "0",
+                        "value_type": "TEXT",
+                        "url": "{$BM.API.SCHEME}://{$BM.HOST}/servers/{$BM.ID}",
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "Zabbix raw items"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "3d3cbacc8a5c4bdc85f4692201649ce7",
+                        "name": "Battlemetrics: country",
+                        "type": "DEPENDENT",
+                        "key": "bm_country",
+                        "delay": "0",
+                        "trends": "0",
+                        "value_type": "CHAR",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.data.attributes.country"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "battlemetrics_get_status"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "Battlemetrics"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "2d3d32ea8fde4554910aaf76dc5c364f",
+                        "name": "Battlemetrics: id",
+                        "type": "DEPENDENT",
+                        "key": "bm_id",
+                        "delay": "0",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.data.id"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "battlemetrics_get_status"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "Battlemetrics"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "6ca5b4c5c1fb406c8dc093296a7dc4e1",
+                        "name": "Battlemetrics: ip",
+                        "type": "DEPENDENT",
+                        "key": "bm_ip",
+                        "delay": "0",
+                        "trends": "0",
+                        "value_type": "CHAR",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.data.attributes.ip"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "battlemetrics_get_status"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "Battlemetrics"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "43a20a62883841b9ba02cc2ff533b1f8",
+                        "name": "Battlemetrics: location",
+                        "type": "DEPENDENT",
+                        "key": "bm_location",
+                        "delay": "0",
+                        "trends": "0",
+                        "value_type": "CHAR",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.data.attributes.location"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "battlemetrics_get_status"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "Battlemetrics"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "87d1bb12b225413f8c6ce1b68e6faad2",
+                        "name": "Battlemetrics: location latitude",
+                        "type": "DEPENDENT",
+                        "key": "bm_location_latitude",
+                        "delay": "0",
+                        "trends": "0",
+                        "value_type": "CHAR",
+                        "inventory_link": "LOCATION_LAT",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.data.attributes.location"
+                                ]
+                            },
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(\\w\\d+.\\d+),(\\w\\d+.\\d+)",
+                                    "\\2"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "battlemetrics_get_status"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "Battlemetrics"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "c91ec127c11e45e7bab3a3ea668805ed",
+                        "name": "Battlemetrics: location longitude",
+                        "type": "DEPENDENT",
+                        "key": "bm_location_longitude",
+                        "delay": "0",
+                        "trends": "0",
+                        "value_type": "CHAR",
+                        "inventory_link": "LOCATION_LON",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.data.attributes.location"
+                                ]
+                            },
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(\\w\\d+.\\d+),(\\w\\d+.\\d+)",
+                                    "\\1"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "battlemetrics_get_status"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "Battlemetrics"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "0ec8e019bb2e4ff09895d7c945c8a4e9",
+                        "name": "Battlemetrics: maxPlayers",
+                        "type": "DEPENDENT",
+                        "key": "bm_maxplayers",
+                        "delay": "0",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.data.attributes.maxPlayers"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "battlemetrics_get_status"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "Battlemetrics"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "3b58ab9b2df84b9586670db854a5a6bc",
+                        "name": "Battlemetrics: name",
+                        "type": "DEPENDENT",
+                        "key": "bm_name",
+                        "delay": "0",
+                        "trends": "0",
+                        "value_type": "CHAR",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.data.attributes.name"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "battlemetrics_get_status"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "Battlemetrics"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "80281dfb2e61480484d268c7c9b00dac",
+                        "name": "Battlemetrics: players",
+                        "type": "DEPENDENT",
+                        "key": "bm_players",
+                        "delay": "0",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.data.attributes.players"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "battlemetrics_get_status"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "Battlemetrics"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "ffd32ffc3d6f4d28ba16135772674f07",
+                        "name": "Battlemetrics: port",
+                        "type": "DEPENDENT",
+                        "key": "bm_port",
+                        "delay": "0",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.data.attributes.port"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "battlemetrics_get_status"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "Battlemetrics"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "7eaa0f394bf54c30a55f3fafcbe21f6e",
+                        "name": "Battlemetrics: rank",
+                        "type": "DEPENDENT",
+                        "key": "bm_rank",
+                        "delay": "0",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.data.attributes.rank"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "battlemetrics_get_status"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "Battlemetrics"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "9f61557f8be14f538da4c07afdea1941",
+                        "name": "Battlemetrics: serverSteamId",
+                        "type": "DEPENDENT",
+                        "key": "bm_serversteamid",
+                        "delay": "0",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.data.attributes.details.serverSteamId"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "battlemetrics_get_status"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "Battlemetrics"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "039dc0ce454d472b80ce9eeee21658ca",
+                        "name": "Battlemetrics: status",
+                        "type": "DEPENDENT",
+                        "key": "bm_status",
+                        "delay": "0",
+                        "trends": "0",
+                        "value_type": "CHAR",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.data.attributes.status"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "battlemetrics_get_status"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "Battlemetrics"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "9aa1575bd5e3416d92b344f6d29a3b7e",
+                        "name": "Battlemetrics: type",
+                        "type": "DEPENDENT",
+                        "key": "bm_type",
+                        "delay": "0",
+                        "trends": "0",
+                        "value_type": "CHAR",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.data.type"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "battlemetrics_get_status"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "Battlemetrics"
+                            }
+                        ]
+                    }
+                ],
+                "macros": [
+                    {
+                        "macro": "{$BM.API.SCHEME}",
+                        "value": "https"
+                    },
+                    {
+                        "macro": "{$BM.HOST}",
+                        "value": "api.battlemetrics.com"
+                    },
+                    {
+                        "macro": "{$BM.ID}",
+                        "value": "14159400"
+                    }
+                ]
+            }
+        ],
+        "graphs": [
+            {
+                "uuid": "b3716bed2bba4a4281c84f3f87accda3",
+                "name": "Battlemetrics players",
+                "graph_items": [
+                    {
+                        "drawtype": "GRADIENT_LINE",
+                        "color": "0040FF",
+                        "item": {
+                            "host": "Template Battlemetrics",
+                            "key": "bm_players"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}
