@@ -1,0 +1,356 @@
+zabbix_export:
+  version: '6.0'
+  date: '2023-09-14T11:59:18Z'
+  groups:
+    - uuid: 7df96b18c230490a9a0a9e2307226338
+      name: Templates
+  templates:
+    - uuid: 1ff81f45531d4cd7a129cd241807724c
+      template: Netvision_UPS
+      name: Netvision_UPS
+      groups:
+        - name: Templates
+      items:
+        - uuid: ec5defafc8464372be244d0cccee9e83
+          name: 'Battery status'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.4555.1.1.1.1.2.1.0
+          key: BATTERYSTATUS
+          delay: '30'
+          description: 'Battery status'
+          valuemap:
+            name: 'Netvision_UPS:BatteryStatus'
+          tags:
+            - tag: Application
+              value: Netvision
+          triggers:
+            - uuid: 195bcd23a10c49aea9ac121f0756ba30
+              expression: last(/Netvision_UPS/BATTERYSTATUS)<>2
+              name: 'Loss of Input Power - {HOSTNAME}'
+              url: 'http://ups1.forrest.local/'
+              priority: DISASTER
+        - uuid: 3110e5e3d76f4cbfbf6437d7f77d7989
+          name: 'Batt charge'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.4555.1.1.1.1.2.4.0
+          key: BATT_CHARGE
+          delay: '30'
+          units: '%'
+          description: 'Batt charge'
+          tags:
+            - tag: Application
+              value: Netvision
+        - uuid: 1d17883f24c840a2a168049562d25012
+          name: 'Batt runtime remaining'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.4555.1.1.1.1.2.3.0
+          key: BATT_RUNTIME_REMAINING
+          delay: '30'
+          description: 'Batt runtime remaining'
+          tags:
+            - tag: Application
+              value: Netvision
+          triggers:
+            - uuid: 9852158c1aa441dbaba998be4302e270
+              expression: last(/Netvision_UPS/BATT_RUNTIME_REMAINING)<5
+              name: 'Run Time Remaining Critical Level - {HOSTNAME}'
+              url: 'http://ups1.forrest.local/'
+              priority: DISASTER
+            - uuid: 0e3ecdcb6dda4aa3b986787de2435511
+              expression: last(/Netvision_UPS/BATT_RUNTIME_REMAINING)<10
+              name: 'Run Time Remaining Low - {HOSTNAME}'
+              url: 'http://ups1.forrest.local/'
+              priority: HIGH
+        - uuid: 9f4b490d14f542d7b65d66631ad87a3b
+          name: 'Batt volts'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.4555.1.1.1.1.2.5.0
+          key: BATT_VOLTS
+          delay: '30'
+          units: V
+          description: 'Batt volts'
+          tags:
+            - tag: Application
+              value: Netvision
+        - uuid: bbdef20ef6ea4c8894746689fe24594e
+          name: 'Input num lines'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.4555.1.1.1.1.3.1.0
+          key: INPUT_NUM_LINES
+          delay: '30'
+          description: 'Input num lines'
+          tags:
+            - tag: Application
+              value: Netvision
+        - uuid: b658dbce4b7d44ea9b5cef7844508303
+          name: 'In voltage P1'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.4555.1.1.1.1.3.3.1.5.1
+          key: IN_VOLTAGE_P1
+          delay: '30'
+          units: V
+          description: 'In voltage P1'
+          tags:
+            - tag: Application
+              value: Netvision
+        - uuid: 97d0b0feed9c4bd68103c6603f5dba3d
+          name: 'In voltage P2'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.4555.1.1.1.1.3.3.1.5.2
+          key: IN_VOLTAGE_P2
+          delay: '30'
+          units: V
+          description: 'In voltage P2'
+          tags:
+            - tag: Application
+              value: Netvision
+        - uuid: a68cb5015e6840c6a8a9aca2a83dc0a3
+          name: 'In voltage P3'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.4555.1.1.1.1.3.3.1.5.3
+          key: IN_VOLTAGE_P3
+          delay: '30'
+          units: V
+          description: 'In voltage P3'
+          tags:
+            - tag: Application
+              value: Netvision
+        - uuid: 2d62fd7008e1460888909d869037644b
+          name: 'Output num lines'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.4555.1.1.1.1.4.3.0
+          key: OUTPUT_NUM_LINES
+          delay: '30'
+          description: 'Output num lines'
+          tags:
+            - tag: Application
+              value: Netvision
+        - uuid: 3252459c6a1a46e4bdb266c672264619
+          name: 'Output source'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.4555.1.1.1.1.4.1.0
+          key: OUTPUT_SOURCE
+          delay: '30'
+          description: 'Output source'
+          valuemap:
+            name: 'Netvision_UPS:OutputSource'
+        - uuid: 476ad03f27d5487fb0e65f556672bd2c
+          name: 'Out current P1'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.4555.1.1.1.1.4.4.1.3.1
+          key: OUT_CURRENT_P1
+          delay: '30'
+          description: 'Out current P1'
+          tags:
+            - tag: Application
+              value: Netvision
+        - uuid: 93644645c5b94470aea66010bc2a1366
+          name: 'Out current P2'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.4555.1.1.1.1.4.4.1.3.2
+          key: OUT_CURRENT_P2
+          delay: '30'
+          description: 'Out current P2'
+          tags:
+            - tag: Application
+              value: Netvision
+        - uuid: 0d196a051e0845fda9ba13b86608f09d
+          name: 'Out current P3'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.4555.1.1.1.1.4.4.1.3.3
+          key: OUT_CURRENT_P3
+          delay: '30'
+          description: 'Out current P3'
+          tags:
+            - tag: Application
+              value: Netvision
+        - uuid: dc92234a656643749dd7557adbb6a273
+          name: 'Out load PCT P1'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.4555.1.1.1.1.4.4.1.4.1
+          key: OUT_LOAD_PCT_P1
+          delay: '30'
+          description: 'Out load PCT P1'
+          tags:
+            - tag: Application
+              value: Netvision
+          triggers:
+            - uuid: e1deb649ea0d4a99b2e4ce03ce00c572
+              expression: last(/Netvision_UPS/OUT_LOAD_PCT_P1)>90
+              name: 'Output Load Too High P1 - {HOSTNAME}'
+              url: 'http://ups1.forrest.local/'
+              priority: WARNING
+        - uuid: 974c6864542249868c382145949e9dd3
+          name: 'Out load PCT P2'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.4555.1.1.1.1.4.4.1.4.2
+          key: OUT_LOAD_PCT_P2
+          delay: '30'
+          description: 'Out load PCT P2'
+          tags:
+            - tag: Application
+              value: Netvision
+          triggers:
+            - uuid: c6cda9d32e074169ab4cae52e5dd52f9
+              expression: last(/Netvision_UPS/OUT_LOAD_PCT_P2)>90
+              name: 'Output Load Too High P2 - {HOSTNAME}'
+              url: 'http://ups1.forrest.local/'
+              priority: WARNING
+        - uuid: 3d3a9152cdd842a4983cfa5d6ea4b2ff
+          name: 'Out load PCT P3'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.4555.1.1.1.1.4.4.1.4.3
+          key: OUT_LOAD_PCT_P3
+          delay: '30'
+          description: 'Out load PCT P3'
+          tags:
+            - tag: Application
+              value: Netvision
+          triggers:
+            - uuid: dddcecc84a704bde837430cfcf875997
+              expression: last(/Netvision_UPS/OUT_LOAD_PCT_P3)>90
+              name: 'Output Load Too High P3 - {HOSTNAME}'
+              url: 'http://ups1.forrest.local/'
+              priority: WARNING
+        - uuid: 9175ea1513ca456dbcc3bd878453d17d
+          name: 'Out voltage P1'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.4555.1.1.1.1.4.4.1.2.1
+          key: OUT_VOLTAGE_P1
+          delay: '30'
+          units: V
+          description: 'Out voltage P1'
+          tags:
+            - tag: Application
+              value: Netvision
+        - uuid: e6e3461e69ca4228813955ec051dc1bd
+          name: 'Out voltage P2'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.4555.1.1.1.1.4.4.1.2.2
+          key: OUT_VOLTAGE_P2
+          delay: '30'
+          units: V
+          description: 'Out voltage P2'
+          tags:
+            - tag: Application
+              value: Netvision
+        - uuid: 89f874710b154129b520e974a16d0534
+          name: 'Out voltage P3'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.4555.1.1.1.1.4.4.1.2.3
+          key: OUT_VOLTAGE_P3
+          delay: '30'
+          units: V
+          description: 'Out voltage P3'
+          tags:
+            - tag: Application
+              value: Netvision
+        - uuid: 457845d6aab145d0993d68863c8cfe2d
+          name: 'Seconds on battery'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.4555.1.1.1.1.2.2.0
+          key: SECONDSONBATTERY
+          delay: '30'
+          value_type: FLOAT
+          description: 'Seconds on battery'
+          tags:
+            - tag: Application
+              value: Netvision
+      valuemaps:
+        - uuid: a372ffdf21aa457cb78542647a8d34cb
+          name: 'Netvision_UPS:BatteryStatus'
+          mappings:
+            - value: '1'
+              newvalue: unknown
+            - value: '2'
+              newvalue: batteryNormal
+            - value: '3'
+              newvalue: batteryLow
+            - value: '4'
+              newvalue: batteryDepleted
+            - value: '5'
+              newvalue: batteryDischarging
+            - value: '6'
+              newvalue: batteryFailure
+            - value: '7'
+              newvalue: upsOff
+        - uuid: 01752b1d639c42c7952d32656a955f91
+          name: 'Netvision_UPS:OutputSource'
+          mappings:
+            - value: '1'
+              newvalue: unknown
+            - value: '2'
+              newvalue: onInverter
+            - value: '3'
+              newvalue: onMains
+            - value: '4'
+              newvalue: ecoMode
+            - value: '5'
+              newvalue: onBypass
+            - value: '6'
+              newvalue: standby
+            - value: '7'
+              newvalue: onMaintenanceBypass
+            - value: '8'
+              newvalue: upsOff
+            - value: '9'
+              newvalue: normalMode
+  graphs:
+    - uuid: a359b62d24d04c778cd1f389c1bdc31f
+      name: 'Batt volts'
+      show_work_period: 'NO'
+      show_triggers: 'NO'
+      type: STACKED
+      show_legend: 'NO'
+      graph_items:
+        - drawtype: FILLED_REGION
+          color: DD0000
+          item:
+            host: Netvision_UPS
+            key: BATT_VOLTS
+    - uuid: 2a08c2f5189046d195f3ef0dd21471c1
+      name: 'In voltage'
+      show_work_period: 'NO'
+      show_triggers: 'NO'
+      show_legend: 'NO'
+      graph_items:
+        - drawtype: BOLD_LINE
+          color: 00CC00
+          item:
+            host: Netvision_UPS
+            key: IN_VOLTAGE_P1
+        - sortorder: '1'
+          drawtype: BOLD_LINE
+          color: '009900'
+          item:
+            host: Netvision_UPS
+            key: IN_VOLTAGE_P2
+        - sortorder: '2'
+          drawtype: BOLD_LINE
+          color: '005500'
+          item:
+            host: Netvision_UPS
+            key: IN_VOLTAGE_P3
+    - uuid: 1af325521a39416d8e07f714f73ae8af
+      name: 'Out voltage'
+      show_work_period: 'NO'
+      show_triggers: 'NO'
+      show_legend: 'NO'
+      graph_items:
+        - drawtype: BOLD_LINE
+          color: 3333FF
+          item:
+            host: Netvision_UPS
+            key: OUT_VOLTAGE_P1
+        - sortorder: '1'
+          drawtype: BOLD_LINE
+          color: 0000AA
+          item:
+            host: Netvision_UPS
+            key: OUT_VOLTAGE_P2
+        - sortorder: '2'
+          drawtype: BOLD_LINE
+          color: '000066'
+          item:
+            host: Netvision_UPS
+            key: OUT_VOLTAGE_P3

@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>5.0</version>
+    <date>2023-09-14T11:55:03Z</date>
+    <groups>
+        <group>
+            <name>Templates</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Netvision_UPS</template>
+            <name>Netvision_UPS</name>
+            <groups>
+                <group>
+                    <name>Templates</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>Netvision</name>
+                </application>
+            </applications>
+            <items>
+                <item>
+                    <name>Battery status</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.4555.1.1.1.1.2.1.0</snmp_oid>
+                    <key>BATTERYSTATUS</key>
+                    <delay>30</delay>
+                    <description>Battery status</description>
+                    <applications>
+                        <application>
+                            <name>Netvision</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>Netvision_UPS:BatteryStatus</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last(0)}&lt;&gt;2</expression>
+                            <name>Loss of Input Power - {HOSTNAME}</name>
+                            <url>http://ups1.forrest.local/</url>
+                            <priority>DISASTER</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>Batt charge</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.4555.1.1.1.1.2.4.0</snmp_oid>
+                    <key>BATT_CHARGE</key>
+                    <delay>30</delay>
+                    <units>%</units>
+                    <description>Batt charge</description>
+                    <applications>
+                        <application>
+                            <name>Netvision</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Batt runtime remaining</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.4555.1.1.1.1.2.3.0</snmp_oid>
+                    <key>BATT_RUNTIME_REMAINING</key>
+                    <delay>30</delay>
+                    <description>Batt runtime remaining</description>
+                    <applications>
+                        <application>
+                            <name>Netvision</name>
+                        </application>
+                    </applications>
+                    <triggers>
+                        <trigger>
+                            <expression>{last(0)}&lt;5</expression>
+                            <name>Run Time Remaining Critical Level - {HOSTNAME}</name>
+                            <url>http://ups1.forrest.local/</url>
+                            <priority>DISASTER</priority>
+                        </trigger>
+                        <trigger>
+                            <expression>{last(0)}&lt;10</expression>
+                            <name>Run Time Remaining Low - {HOSTNAME}</name>
+                            <url>http://ups1.forrest.local/</url>
+                            <priority>HIGH</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>Batt volts</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.4555.1.1.1.1.2.5.0</snmp_oid>
+                    <key>BATT_VOLTS</key>
+                    <delay>30</delay>
+                    <units>V</units>
+                    <description>Batt volts</description>
+                    <applications>
+                        <application>
+                            <name>Netvision</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Input num lines</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.4555.1.1.1.1.3.1.0</snmp_oid>
+                    <key>INPUT_NUM_LINES</key>
+                    <delay>30</delay>
+                    <description>Input num lines</description>
+                    <applications>
+                        <application>
+                            <name>Netvision</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>In voltage P1</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.4555.1.1.1.1.3.3.1.5.1</snmp_oid>
+                    <key>IN_VOLTAGE_P1</key>
+                    <delay>30</delay>
+                    <units>V</units>
+                    <description>In voltage P1</description>
+                    <applications>
+                        <application>
+                            <name>Netvision</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>In voltage P2</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.4555.1.1.1.1.3.3.1.5.2</snmp_oid>
+                    <key>IN_VOLTAGE_P2</key>
+                    <delay>30</delay>
+                    <units>V</units>
+                    <description>In voltage P2</description>
+                    <applications>
+                        <application>
+                            <name>Netvision</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>In voltage P3</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.4555.1.1.1.1.3.3.1.5.3</snmp_oid>
+                    <key>IN_VOLTAGE_P3</key>
+                    <delay>30</delay>
+                    <units>V</units>
+                    <description>In voltage P3</description>
+                    <applications>
+                        <application>
+                            <name>Netvision</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Output num lines</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.4555.1.1.1.1.4.3.0</snmp_oid>
+                    <key>OUTPUT_NUM_LINES</key>
+                    <delay>30</delay>
+                    <description>Output num lines</description>
+                    <applications>
+                        <application>
+                            <name>Netvision</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Output source</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.4555.1.1.1.1.4.1.0</snmp_oid>
+                    <key>OUTPUT_SOURCE</key>
+                    <delay>30</delay>
+                    <description>Output source</description>
+                    <valuemap>
+                        <name>Netvision_UPS:OutputSource</name>
+                    </valuemap>
+                </item>
+                <item>
+                    <name>Out current P1</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.4555.1.1.1.1.4.4.1.3.1</snmp_oid>
+                    <key>OUT_CURRENT_P1</key>
+                    <delay>30</delay>
+                    <description>Out current P1</description>
+                    <applications>
+                        <application>
+                            <name>Netvision</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Out current P2</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.4555.1.1.1.1.4.4.1.3.2</snmp_oid>
+                    <key>OUT_CURRENT_P2</key>
+                    <delay>30</delay>
+                    <description>Out current P2</description>
+                    <applications>
+                        <application>
+                            <name>Netvision</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Out current P3</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.4555.1.1.1.1.4.4.1.3.3</snmp_oid>
+                    <key>OUT_CURRENT_P3</key>
+                    <delay>30</delay>
+                    <description>Out current P3</description>
+                    <applications>
+                        <application>
+                            <name>Netvision</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Out load PCT P1</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.4555.1.1.1.1.4.4.1.4.1</snmp_oid>
+                    <key>OUT_LOAD_PCT_P1</key>
+                    <delay>30</delay>
+                    <description>Out load PCT P1</description>
+                    <applications>
+                        <application>
+                            <name>Netvision</name>
+                        </application>
+                    </applications>
+                    <triggers>
+                        <trigger>
+                            <expression>{last(0)}&gt;90</expression>
+                            <name>Output Load Too High P1 - {HOSTNAME}</name>
+                            <url>http://ups1.forrest.local/</url>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>Out load PCT P2</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.4555.1.1.1.1.4.4.1.4.2</snmp_oid>
+                    <key>OUT_LOAD_PCT_P2</key>
+                    <delay>30</delay>
+                    <description>Out load PCT P2</description>
+                    <applications>
+                        <application>
+                            <name>Netvision</name>
+                        </application>
+                    </applications>
+                    <triggers>
+                        <trigger>
+                            <expression>{last(0)}&gt;90</expression>
+                            <name>Output Load Too High P2 - {HOSTNAME}</name>
+                            <url>http://ups1.forrest.local/</url>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>Out load PCT P3</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.4555.1.1.1.1.4.4.1.4.3</snmp_oid>
+                    <key>OUT_LOAD_PCT_P3</key>
+                    <delay>30</delay>
+                    <description>Out load PCT P3</description>
+                    <applications>
+                        <application>
+                            <name>Netvision</name>
+                        </application>
+                    </applications>
+                    <triggers>
+                        <trigger>
+                            <expression>{last(0)}&gt;90</expression>
+                            <name>Output Load Too High P3 - {HOSTNAME}</name>
+                            <url>http://ups1.forrest.local/</url>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>Out voltage P1</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.4555.1.1.1.1.4.4.1.2.1</snmp_oid>
+                    <key>OUT_VOLTAGE_P1</key>
+                    <delay>30</delay>
+                    <units>V</units>
+                    <description>Out voltage P1</description>
+                    <applications>
+                        <application>
+                            <name>Netvision</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Out voltage P2</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.4555.1.1.1.1.4.4.1.2.2</snmp_oid>
+                    <key>OUT_VOLTAGE_P2</key>
+                    <delay>30</delay>
+                    <units>V</units>
+                    <description>Out voltage P2</description>
+                    <applications>
+                        <application>
+                            <name>Netvision</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Out voltage P3</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.4555.1.1.1.1.4.4.1.2.3</snmp_oid>
+                    <key>OUT_VOLTAGE_P3</key>
+                    <delay>30</delay>
+                    <units>V</units>
+                    <description>Out voltage P3</description>
+                    <applications>
+                        <application>
+                            <name>Netvision</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Seconds on battery</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.4555.1.1.1.1.2.2.0</snmp_oid>
+                    <key>SECONDSONBATTERY</key>
+                    <delay>30</delay>
+                    <value_type>FLOAT</value_type>
+                    <description>Seconds on battery</description>
+                    <applications>
+                        <application>
+                            <name>Netvision</name>
+                        </application>
+                    </applications>
+                </item>
+            </items>
+        </template>
+    </templates>
+    <graphs>
+        <graph>
+            <name>Batt volts</name>
+            <show_work_period>NO</show_work_period>
+            <show_triggers>NO</show_triggers>
+            <type>STACKED</type>
+            <show_legend>NO</show_legend>
+            <graph_items>
+                <graph_item>
+                    <drawtype>FILLED_REGION</drawtype>
+                    <color>DD0000</color>
+                    <item>
+                        <host>Netvision_UPS</host>
+                        <key>BATT_VOLTS</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <name>In voltage</name>
+            <show_work_period>NO</show_work_period>
+            <show_triggers>NO</show_triggers>
+            <show_legend>NO</show_legend>
+            <graph_items>
+                <graph_item>
+                    <drawtype>BOLD_LINE</drawtype>
+                    <color>00CC00</color>
+                    <item>
+                        <host>Netvision_UPS</host>
+                        <key>IN_VOLTAGE_P1</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <drawtype>BOLD_LINE</drawtype>
+                    <color>009900</color>
+                    <item>
+                        <host>Netvision_UPS</host>
+                        <key>IN_VOLTAGE_P2</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>2</sortorder>
+                    <drawtype>BOLD_LINE</drawtype>
+                    <color>005500</color>
+                    <item>
+                        <host>Netvision_UPS</host>
+                        <key>IN_VOLTAGE_P3</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <name>Out voltage</name>
+            <show_work_period>NO</show_work_period>
+            <show_triggers>NO</show_triggers>
+            <show_legend>NO</show_legend>
+            <graph_items>
+                <graph_item>
+                    <drawtype>BOLD_LINE</drawtype>
+                    <color>3333FF</color>
+                    <item>
+                        <host>Netvision_UPS</host>
+                        <key>OUT_VOLTAGE_P1</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <drawtype>BOLD_LINE</drawtype>
+                    <color>0000AA</color>
+                    <item>
+                        <host>Netvision_UPS</host>
+                        <key>OUT_VOLTAGE_P2</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>2</sortorder>
+                    <drawtype>BOLD_LINE</drawtype>
+                    <color>000066</color>
+                    <item>
+                        <host>Netvision_UPS</host>
+                        <key>OUT_VOLTAGE_P3</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+    </graphs>
+    <value_maps>
+        <value_map>
+            <name>Netvision_UPS:BatteryStatus</name>
+            <mappings>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>unknown</newvalue>
+                </mapping>
+                <mapping>
+                    <value>2</value>
+                    <newvalue>batteryNormal</newvalue>
+                </mapping>
+                <mapping>
+                    <value>3</value>
+                    <newvalue>batteryLow</newvalue>
+                </mapping>
+                <mapping>
+                    <value>4</value>
+                    <newvalue>batteryDepleted</newvalue>
+                </mapping>
+                <mapping>
+                    <value>5</value>
+                    <newvalue>batteryDischarging</newvalue>
+                </mapping>
+                <mapping>
+                    <value>6</value>
+                    <newvalue>batteryFailure</newvalue>
+                </mapping>
+                <mapping>
+                    <value>7</value>
+                    <newvalue>upsOff</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+        <value_map>
+            <name>Netvision_UPS:OutputSource</name>
+            <mappings>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>unknown</newvalue>
+                </mapping>
+                <mapping>
+                    <value>2</value>
+                    <newvalue>onInverter</newvalue>
+                </mapping>
+                <mapping>
+                    <value>3</value>
+                    <newvalue>onMains</newvalue>
+                </mapping>
+                <mapping>
+                    <value>4</value>
+                    <newvalue>ecoMode</newvalue>
+                </mapping>
+                <mapping>
+                    <value>5</value>
+                    <newvalue>onBypass</newvalue>
+                </mapping>
+                <mapping>
+                    <value>6</value>
+                    <newvalue>standby</newvalue>
+                </mapping>
+                <mapping>
+                    <value>7</value>
+                    <newvalue>onMaintenanceBypass</newvalue>
+                </mapping>
+                <mapping>
+                    <value>8</value>
+                    <newvalue>upsOff</newvalue>
+                </mapping>
+                <mapping>
+                    <value>9</value>
+                    <newvalue>normalMode</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+    </value_maps>
+</zabbix_export>
