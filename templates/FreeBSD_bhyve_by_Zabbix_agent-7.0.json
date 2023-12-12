@@ -1,0 +1,844 @@
+{
+    "zabbix_export": {
+        "version": "7.0",
+        "template_groups": [
+            {
+                "uuid": "7df96b18c230490a9a0a9e2307226338",
+                "name": "Templates"
+            }
+        ],
+        "templates": [
+            {
+                "uuid": "f146bbe8f7394bc1a8b6eea78f40596e",
+                "template": "FreeBSD bhyve by Zabbix agent",
+                "name": "FreeBSD bhyve by Zabbix agent",
+                "description": "This dev template for bhyve uses pull request vm-bhyve\nhttps://github.com/churchers/vm-bhyve/pull/402\n\n# get branche json-list from guthub user runhyve\ncd /opt\ngit clone -b json-lists https://github.com/runhyve/vm-bhyve\n\n# zbx agent\ncat /usr/local/etc/zabbix6/zabbix_agentd.conf.d/zbx.bhyve.conf\nUserParameter=zbx.bhyve.vm.list,/usr/local/bin/sudo /usr/local/bin/zabbix-bhyve-list\nUserParameter=zbx.bhyve.vm.switch.list,/usr/local/bin/sudo /usr/local/bin/zabbix-bhyve-switch-list\nUserParameter=zbx.bhyve.vm.datastore.list,/usr/local/bin/sudo /usr/local/bin/zabbix-bhyve-datastore-list\n\n# sudo\ncat /usr/local/etc/sudoers.d/zabbix\nzabbix      ALL=NOPASSWD: /usr/local/bin/zabbix-bhyve-list, /usr/local/bin/zabbix-bhyve-switch-list, /usr/local/bin/zabbix-bhyve-datastore-list\n\n# example cmd\ncat /usr/local/bin/zabbix-bhyve-list\n#!/bin/sh\n\ncd /opt/vm-bhyve\n/opt/vm-bhyve/vm list -j",
+                "vendor": {
+                    "name": "Open-Tech",
+                    "version": "7.0-0"
+                },
+                "groups": [
+                    {
+                        "name": "Templates"
+                    }
+                ],
+                "items": [
+                    {
+                        "uuid": "e6eaa503eaa343d395e0967f3797f011",
+                        "name": "Get bhyve datastores",
+                        "key": "zbx.bhyve.vm.datastore.list",
+                        "history": "0",
+                        "trends": "0",
+                        "value_type": "TEXT",
+                        "description": "vm datastore list -j",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.datastores"
+                                ]
+                            }
+                        ],
+                        "tags": [
+                            {
+                                "tag": "component",
+                                "value": "raw"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "589b0ad324ec47b5976a60d3ee90ff4a",
+                        "name": "Get bhyve machines",
+                        "key": "zbx.bhyve.vm.list",
+                        "history": "0",
+                        "trends": "0",
+                        "value_type": "TEXT",
+                        "description": "vm list -j",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.machines"
+                                ]
+                            }
+                        ],
+                        "tags": [
+                            {
+                                "tag": "component",
+                                "value": "raw"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "241e706e060241989f296f9ae3e7aba6",
+                        "name": "Get bhyve switches",
+                        "key": "zbx.bhyve.vm.switch.list",
+                        "history": "0",
+                        "trends": "0",
+                        "value_type": "TEXT",
+                        "description": "vm switch list -j",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.switches"
+                                ]
+                            }
+                        ],
+                        "tags": [
+                            {
+                                "tag": "component",
+                                "value": "raw"
+                            }
+                        ]
+                    }
+                ],
+                "discovery_rules": [
+                    {
+                        "uuid": "e0efb89ede6543b78b00f387512cad9c",
+                        "name": "Discovery bhyve datastore",
+                        "type": "DEPENDENT",
+                        "key": "zbx.bhyve.vm.datastore",
+                        "delay": "0",
+                        "lifetime": "1d",
+                        "description": "UserParameter=zbx.bhyve.vm.switch.list,/usr/local/bin/sudo /usr/local/bin/zabbix-bhyve-switch-list",
+                        "item_prototypes": [
+                            {
+                                "uuid": "9e21b319542748fea058d55febb7c1c0",
+                                "name": "VM Datastore {#BHYVE_DATASTORE_NAME} dataset",
+                                "type": "DEPENDENT",
+                                "key": "zbx.bhyve.vm.datastore.dataset[{#BHYVE_DATASTORE_NAME}]",
+                                "delay": "0",
+                                "trends": "0",
+                                "value_type": "CHAR",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.[?(@.name=='{#BHYVE_DATASTORE_NAME}')].dataset.first()"
+                                        ]
+                                    },
+                                    {
+                                        "type": "DISCARD_UNCHANGED_HEARTBEAT",
+                                        "parameters": [
+                                            "1h"
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "zbx.bhyve.vm.datastore.list"
+                                },
+                                "tags": [
+                                    {
+                                        "tag": "bhyve",
+                                        "value": "datastore"
+                                    },
+                                    {
+                                        "tag": "datastore",
+                                        "value": "dataset"
+                                    }
+                                ]
+                            },
+                            {
+                                "uuid": "a3a24032d62e4507a2b42b1b56be6cb8",
+                                "name": "VM Datastore {#BHYVE_DATASTORE_NAME} name",
+                                "type": "DEPENDENT",
+                                "key": "zbx.bhyve.vm.datastore.name[{#BHYVE_DATASTORE_NAME}]",
+                                "delay": "0",
+                                "trends": "0",
+                                "value_type": "CHAR",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.[?(@.name=='{#BHYVE_DATASTORE_NAME}')].name.first()"
+                                        ]
+                                    },
+                                    {
+                                        "type": "DISCARD_UNCHANGED_HEARTBEAT",
+                                        "parameters": [
+                                            "1h"
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "zbx.bhyve.vm.datastore.list"
+                                },
+                                "tags": [
+                                    {
+                                        "tag": "bhyve",
+                                        "value": "datastore"
+                                    },
+                                    {
+                                        "tag": "datastore",
+                                        "value": "name"
+                                    }
+                                ]
+                            },
+                            {
+                                "uuid": "1108632aa96c49fca6436cca226e16e3",
+                                "name": "VM Datastore {#BHYVE_DATASTORE_NAME} path",
+                                "type": "DEPENDENT",
+                                "key": "zbx.bhyve.vm.datastore.path[{#BHYVE_DATASTORE_NAME}]",
+                                "delay": "0",
+                                "trends": "0",
+                                "value_type": "CHAR",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.[?(@.name=='{#BHYVE_DATASTORE_NAME}')].path.first()"
+                                        ]
+                                    },
+                                    {
+                                        "type": "DISCARD_UNCHANGED_HEARTBEAT",
+                                        "parameters": [
+                                            "1h"
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "zbx.bhyve.vm.datastore.list"
+                                },
+                                "tags": [
+                                    {
+                                        "tag": "bhyve",
+                                        "value": "datastore"
+                                    },
+                                    {
+                                        "tag": "datastore",
+                                        "value": "path"
+                                    }
+                                ]
+                            },
+                            {
+                                "uuid": "a6c40b7c08e540a3829098e79e097753",
+                                "name": "VM Datastore {#BHYVE_DATASTORE_NAME} type",
+                                "type": "DEPENDENT",
+                                "key": "zbx.bhyve.vm.datastore.type[{#BHYVE_DATASTORE_NAME}]",
+                                "delay": "0",
+                                "trends": "0",
+                                "value_type": "CHAR",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.[?(@.name=='{#BHYVE_DATASTORE_NAME}')].type.first()"
+                                        ]
+                                    },
+                                    {
+                                        "type": "DISCARD_UNCHANGED_HEARTBEAT",
+                                        "parameters": [
+                                            "1h"
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "zbx.bhyve.vm.datastore.list"
+                                },
+                                "tags": [
+                                    {
+                                        "tag": "bhyve",
+                                        "value": "datastore"
+                                    },
+                                    {
+                                        "tag": "datastore",
+                                        "value": "type"
+                                    }
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "zbx.bhyve.vm.datastore.list"
+                        },
+                        "lld_macro_paths": [
+                            {
+                                "lld_macro": "{#BHYVE_DATASTORE_NAME}",
+                                "path": "$.name"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "90989aae52a5434d806f8b4a26304cc7",
+                        "name": "Discovery bhyve machines",
+                        "type": "DEPENDENT",
+                        "key": "zbx.bhyve.vm.machines",
+                        "delay": "0",
+                        "lifetime": "1d",
+                        "description": "UserParameter=zbx.bhyve.vm.list,/usr/local/bin/sudo /usr/local/bin/zabbix-bhyve-list",
+                        "item_prototypes": [
+                            {
+                                "uuid": "9b6b9098d14e4cd2aae06f64a107f3a2",
+                                "name": "VM Host {#BHYVE_NAME} auto",
+                                "type": "DEPENDENT",
+                                "key": "zbx.bhyve.vm.auto[{#BHYVE_NAME}]",
+                                "delay": "0",
+                                "trends": "0",
+                                "value_type": "CHAR",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.[?(@.name=='{#BHYVE_NAME}')].auto.first()"
+                                        ]
+                                    },
+                                    {
+                                        "type": "DISCARD_UNCHANGED_HEARTBEAT",
+                                        "parameters": [
+                                            "1h"
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "zbx.bhyve.vm.list"
+                                },
+                                "tags": [
+                                    {
+                                        "tag": "bhyve",
+                                        "value": "auto"
+                                    }
+                                ]
+                            },
+                            {
+                                "uuid": "ceb3091caa624c19825db1fffa39df84",
+                                "name": "VM Host {#BHYVE_NAME} cpu",
+                                "type": "DEPENDENT",
+                                "key": "zbx.bhyve.vm.cpu[{#BHYVE_NAME}]",
+                                "delay": "0",
+                                "trends": "0",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.[?(@.name=='{#BHYVE_NAME}')].cpu.first()"
+                                        ]
+                                    },
+                                    {
+                                        "type": "DISCARD_UNCHANGED_HEARTBEAT",
+                                        "parameters": [
+                                            "1h"
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "zbx.bhyve.vm.list"
+                                },
+                                "tags": [
+                                    {
+                                        "tag": "bhyve",
+                                        "value": "cpu"
+                                    }
+                                ]
+                            },
+                            {
+                                "uuid": "033a998399854756a0e76093a78134fe",
+                                "name": "VM Host {#BHYVE_NAME} datastore",
+                                "type": "DEPENDENT",
+                                "key": "zbx.bhyve.vm.datastore[{#BHYVE_NAME}]",
+                                "delay": "0",
+                                "trends": "0",
+                                "value_type": "CHAR",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.[?(@.name=='{#BHYVE_NAME}')].datastore.first()"
+                                        ]
+                                    },
+                                    {
+                                        "type": "DISCARD_UNCHANGED_HEARTBEAT",
+                                        "parameters": [
+                                            "1h"
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "zbx.bhyve.vm.list"
+                                },
+                                "tags": [
+                                    {
+                                        "tag": "bhyve",
+                                        "value": "datastore"
+                                    }
+                                ]
+                            },
+                            {
+                                "uuid": "a1471cd9d3764bfd9bfb8203f8e5b3fb",
+                                "name": "VM Host {#BHYVE_NAME} loader",
+                                "type": "DEPENDENT",
+                                "key": "zbx.bhyve.vm.loader[{#BHYVE_NAME}]",
+                                "delay": "0",
+                                "trends": "0",
+                                "value_type": "CHAR",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.[?(@.name=='{#BHYVE_NAME}')].loader.first()"
+                                        ]
+                                    },
+                                    {
+                                        "type": "DISCARD_UNCHANGED_HEARTBEAT",
+                                        "parameters": [
+                                            "1h"
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "zbx.bhyve.vm.list"
+                                },
+                                "tags": [
+                                    {
+                                        "tag": "bhyve",
+                                        "value": "loader"
+                                    }
+                                ]
+                            },
+                            {
+                                "uuid": "af650fbdd1864fa3b7ed634ea7242e04",
+                                "name": "VM Host {#BHYVE_NAME} memory",
+                                "type": "DEPENDENT",
+                                "key": "zbx.bhyve.vm.memory[{#BHYVE_NAME}]",
+                                "delay": "0",
+                                "trends": "0",
+                                "value_type": "CHAR",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.[?(@.name=='{#BHYVE_NAME}')].memory.first()"
+                                        ]
+                                    },
+                                    {
+                                        "type": "DISCARD_UNCHANGED_HEARTBEAT",
+                                        "parameters": [
+                                            "1h"
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "zbx.bhyve.vm.list"
+                                },
+                                "tags": [
+                                    {
+                                        "tag": "bhyve",
+                                        "value": "memory"
+                                    }
+                                ]
+                            },
+                            {
+                                "uuid": "3427efb6339f4fcd8a30c8b98e5f56d0",
+                                "name": "VM Host {#BHYVE_NAME} name",
+                                "type": "DEPENDENT",
+                                "key": "zbx.bhyve.vm.name[{#BHYVE_NAME}]",
+                                "delay": "0",
+                                "trends": "0",
+                                "value_type": "CHAR",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.[?(@.name=='{#BHYVE_NAME}')].name.first()"
+                                        ]
+                                    },
+                                    {
+                                        "type": "DISCARD_UNCHANGED_HEARTBEAT",
+                                        "parameters": [
+                                            "1h"
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "zbx.bhyve.vm.list"
+                                },
+                                "tags": [
+                                    {
+                                        "tag": "bhyve",
+                                        "value": "name"
+                                    }
+                                ]
+                            },
+                            {
+                                "uuid": "896d2a7a05b3451db9a1fb5e84bfe4d2",
+                                "name": "VM Host {#BHYVE_NAME} state",
+                                "type": "DEPENDENT",
+                                "key": "zbx.bhyve.vm.state[{#BHYVE_NAME}]",
+                                "delay": "0",
+                                "trends": "0",
+                                "value_type": "CHAR",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.[?(@.name=='{#BHYVE_NAME}')].state.first()"
+                                        ]
+                                    },
+                                    {
+                                        "type": "DISCARD_UNCHANGED_HEARTBEAT",
+                                        "parameters": [
+                                            "1h"
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "zbx.bhyve.vm.list"
+                                },
+                                "tags": [
+                                    {
+                                        "tag": "bhyve",
+                                        "value": "state"
+                                    }
+                                ]
+                            },
+                            {
+                                "uuid": "0a0d8c755a0f40a3ba3cbd9219a64a6f",
+                                "name": "VM Host {#BHYVE_NAME} vnc",
+                                "type": "DEPENDENT",
+                                "key": "zbx.bhyve.vm.vnc[{#BHYVE_NAME}]",
+                                "delay": "0",
+                                "trends": "0",
+                                "value_type": "CHAR",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.[?(@.name=='{#BHYVE_NAME}')].vnc.first()"
+                                        ]
+                                    },
+                                    {
+                                        "type": "DISCARD_UNCHANGED_HEARTBEAT",
+                                        "parameters": [
+                                            "1h"
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "zbx.bhyve.vm.list"
+                                },
+                                "tags": [
+                                    {
+                                        "tag": "bhyve",
+                                        "value": "vnc"
+                                    }
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "zbx.bhyve.vm.list"
+                        },
+                        "lld_macro_paths": [
+                            {
+                                "lld_macro": "{#BHYVE_NAME}",
+                                "path": "$.name"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "5a38190b9c474642af17f82c8568a60e",
+                        "name": "Discovery bhyve switches",
+                        "type": "DEPENDENT",
+                        "key": "zbx.bhyve.vm.switches",
+                        "delay": "0",
+                        "lifetime": "1d",
+                        "description": "UserParameter=zbx.bhyve.vm.switch.list,/usr/local/bin/sudo /usr/local/bin/zabbix-bhyve-switch-list",
+                        "item_prototypes": [
+                            {
+                                "uuid": "30b94e69e40b47a397e911b6b5c3b04f",
+                                "name": "VM Switch {#BHYVE_SWITCH_NAME} address",
+                                "type": "DEPENDENT",
+                                "key": "zbx.bhyve.vm.switch.address[{#BHYVE_SWITCH_NAME}]",
+                                "delay": "0",
+                                "trends": "0",
+                                "value_type": "CHAR",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.[?(@.name=='{#BHYVE_SWITCH_NAME}')].address.first()"
+                                        ]
+                                    },
+                                    {
+                                        "type": "DISCARD_UNCHANGED_HEARTBEAT",
+                                        "parameters": [
+                                            "1h"
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "zbx.bhyve.vm.switch.list"
+                                },
+                                "tags": [
+                                    {
+                                        "tag": "bhyve",
+                                        "value": "switches"
+                                    },
+                                    {
+                                        "tag": "switches",
+                                        "value": "address"
+                                    }
+                                ]
+                            },
+                            {
+                                "uuid": "483a0b2336344b2d99469c918473db2c",
+                                "name": "VM Switch {#BHYVE_SWITCH_NAME} iface",
+                                "type": "DEPENDENT",
+                                "key": "zbx.bhyve.vm.switch.iface[{#BHYVE_SWITCH_NAME}]",
+                                "delay": "0",
+                                "trends": "0",
+                                "value_type": "CHAR",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.[?(@.name=='{#BHYVE_SWITCH_NAME}')].iface.first()"
+                                        ]
+                                    },
+                                    {
+                                        "type": "DISCARD_UNCHANGED_HEARTBEAT",
+                                        "parameters": [
+                                            "1h"
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "zbx.bhyve.vm.switch.list"
+                                },
+                                "tags": [
+                                    {
+                                        "tag": "bhyve",
+                                        "value": "switches"
+                                    },
+                                    {
+                                        "tag": "switches",
+                                        "value": "iface"
+                                    }
+                                ]
+                            },
+                            {
+                                "uuid": "db42e2337999421ab7fd7e5156798c64",
+                                "name": "VM Switch {#BHYVE_SWITCH_NAME} mtu",
+                                "type": "DEPENDENT",
+                                "key": "zbx.bhyve.vm.switch.mtu[{#BHYVE_SWITCH_NAME}]",
+                                "delay": "0",
+                                "trends": "0",
+                                "value_type": "CHAR",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.[?(@.name=='{#BHYVE_SWITCH_NAME}')].mtu.first()"
+                                        ]
+                                    },
+                                    {
+                                        "type": "DISCARD_UNCHANGED_HEARTBEAT",
+                                        "parameters": [
+                                            "1h"
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "zbx.bhyve.vm.switch.list"
+                                },
+                                "tags": [
+                                    {
+                                        "tag": "bhyve",
+                                        "value": "switches"
+                                    },
+                                    {
+                                        "tag": "switches",
+                                        "value": "mtu"
+                                    }
+                                ]
+                            },
+                            {
+                                "uuid": "fd4e411a062749d4bee79efd7f8a957c",
+                                "name": "VM Switch {#BHYVE_SWITCH_NAME} name",
+                                "type": "DEPENDENT",
+                                "key": "zbx.bhyve.vm.switch.name[{#BHYVE_SWITCH_NAME}]",
+                                "delay": "0",
+                                "trends": "0",
+                                "value_type": "CHAR",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.[?(@.name=='{#BHYVE_SWITCH_NAME}')].name.first()"
+                                        ]
+                                    },
+                                    {
+                                        "type": "DISCARD_UNCHANGED_HEARTBEAT",
+                                        "parameters": [
+                                            "1h"
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "zbx.bhyve.vm.switch.list"
+                                },
+                                "tags": [
+                                    {
+                                        "tag": "bhyve",
+                                        "value": "switches"
+                                    }
+                                ]
+                            },
+                            {
+                                "uuid": "68c619f640c74c7995a62520d24b70e0",
+                                "name": "VM Switch {#BHYVE_SWITCH_NAME} ports",
+                                "type": "DEPENDENT",
+                                "key": "zbx.bhyve.vm.switch.ports[{#BHYVE_SWITCH_NAME}]",
+                                "delay": "0",
+                                "trends": "0",
+                                "value_type": "CHAR",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.[?(@.name=='{#BHYVE_SWITCH_NAME}')].ports.first()"
+                                        ]
+                                    },
+                                    {
+                                        "type": "DISCARD_UNCHANGED_HEARTBEAT",
+                                        "parameters": [
+                                            "1h"
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "zbx.bhyve.vm.switch.list"
+                                },
+                                "tags": [
+                                    {
+                                        "tag": "bhyve",
+                                        "value": "switches"
+                                    },
+                                    {
+                                        "tag": "switches",
+                                        "value": "ports"
+                                    }
+                                ]
+                            },
+                            {
+                                "uuid": "7578be69b8494d3698c84ef40bdb5b72",
+                                "name": "VM Switch {#BHYVE_SWITCH_NAME} private",
+                                "type": "DEPENDENT",
+                                "key": "zbx.bhyve.vm.switch.private[{#BHYVE_SWITCH_NAME}]",
+                                "delay": "0",
+                                "trends": "0",
+                                "value_type": "CHAR",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.[?(@.name=='{#BHYVE_SWITCH_NAME}')].private.first()"
+                                        ]
+                                    },
+                                    {
+                                        "type": "DISCARD_UNCHANGED_HEARTBEAT",
+                                        "parameters": [
+                                            "1h"
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "zbx.bhyve.vm.switch.list"
+                                },
+                                "tags": [
+                                    {
+                                        "tag": "bhyve",
+                                        "value": "switches"
+                                    },
+                                    {
+                                        "tag": "switches",
+                                        "value": "private"
+                                    }
+                                ]
+                            },
+                            {
+                                "uuid": "99198153dde74c9891bd0abd6772ef3a",
+                                "name": "VM Switch {#BHYVE_SWITCH_NAME} type",
+                                "type": "DEPENDENT",
+                                "key": "zbx.bhyve.vm.switch.type[{#BHYVE_SWITCH_NAME}]",
+                                "delay": "0",
+                                "trends": "0",
+                                "value_type": "CHAR",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.[?(@.name=='{#BHYVE_SWITCH_NAME}')].type.first()"
+                                        ]
+                                    },
+                                    {
+                                        "type": "DISCARD_UNCHANGED_HEARTBEAT",
+                                        "parameters": [
+                                            "1h"
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "zbx.bhyve.vm.switch.list"
+                                },
+                                "tags": [
+                                    {
+                                        "tag": "bhyve",
+                                        "value": "switches"
+                                    },
+                                    {
+                                        "tag": "switches",
+                                        "value": "type"
+                                    }
+                                ]
+                            },
+                            {
+                                "uuid": "6a8d29997ee1474f9554e38d32ad359b",
+                                "name": "VM Switch {#BHYVE_SWITCH_NAME} vlan",
+                                "type": "DEPENDENT",
+                                "key": "zbx.bhyve.vm.switch.vlan[{#BHYVE_SWITCH_NAME}]",
+                                "delay": "0",
+                                "trends": "0",
+                                "value_type": "CHAR",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.[?(@.name=='{#BHYVE_SWITCH_NAME}')].vlan.first()"
+                                        ]
+                                    },
+                                    {
+                                        "type": "DISCARD_UNCHANGED_HEARTBEAT",
+                                        "parameters": [
+                                            "1h"
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "zbx.bhyve.vm.switch.list"
+                                },
+                                "tags": [
+                                    {
+                                        "tag": "bhyve",
+                                        "value": "switches"
+                                    },
+                                    {
+                                        "tag": "switches",
+                                        "value": "vlan"
+                                    }
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "zbx.bhyve.vm.switch.list"
+                        },
+                        "lld_macro_paths": [
+                            {
+                                "lld_macro": "{#BHYVE_SWITCH_NAME}",
+                                "path": "$.name"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
