@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
-    <version>7.0</version>
-    <template_groups>
-        <template_group>
+    <version>6.0</version>
+    <date>2023-12-27T13:46:29Z</date>
+    <groups>
+        <group>
             <uuid>7df96b18c230490a9a0a9e2307226338</uuid>
             <name>Templates</name>
-        </template_group>
-    </template_groups>
+        </group>
+    </groups>
     <templates>
         <template>
             <uuid>f146bbe8f7394bc1a8b6eea78f40596e</uuid>
@@ -34,11 +35,9 @@ cat /usr/local/bin/zabbix-bhyve-list
 #!/bin/sh
 
 cd /opt/vm-bhyve
-/opt/vm-bhyve/vm list -j</description>
-            <vendor>
-                <name>Open-Tech</name>
-                <version>7.0-0</version>
-            </vendor>
+/opt/vm-bhyve/vm list -j
+name: Open-Tech
+version: 7.0-0</description>
             <groups>
                 <group>
                     <name>Templates</name>
@@ -989,6 +988,16 @@ cd /opt/vm-bhyve
                     </lld_macro_paths>
                 </discovery_rule>
             </discovery_rules>
+            <tags>
+                <tag>
+                    <tag>class</tag>
+                    <value>vm</value>
+                </tag>
+                <tag>
+                    <tag>target</tag>
+                    <value>bhyve</value>
+                </tag>
+            </tags>
             <macros>
                 <macro>
                     <macro>{$BHYVE.DATASTORE.NAME.MATCHES}</macro>

@@ -1,6 +1,7 @@
 zabbix_export:
-  version: '7.0'
-  template_groups:
+  version: '6.0'
+  date: '2023-12-27T13:46:28Z'
+  groups:
     - uuid: 7df96b18c230490a9a0a9e2307226338
       name: Templates
   templates:
@@ -31,7 +32,6 @@ zabbix_export:
         
         cd /opt/vm-bhyve
         /opt/vm-bhyve/vm list -j
-      vendor:
         name: Open-Tech
         version: 7.0-0
       groups:
@@ -589,6 +589,11 @@ zabbix_export:
           lld_macro_paths:
             - lld_macro: '{#BHYVE_SWITCH_NAME}'
               path: $.name
+      tags:
+        - tag: class
+          value: vm
+        - tag: target
+          value: bhyve
       macros:
         - macro: '{$BHYVE.DATASTORE.NAME.MATCHES}'
           value: '^.*$'

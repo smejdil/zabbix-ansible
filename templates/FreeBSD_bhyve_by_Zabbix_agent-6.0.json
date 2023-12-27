@@ -1,7 +1,8 @@
 {
     "zabbix_export": {
-        "version": "7.0",
-        "template_groups": [
+        "version": "6.0",
+        "date": "2023-12-27T13:46:31Z",
+        "groups": [
             {
                 "uuid": "7df96b18c230490a9a0a9e2307226338",
                 "name": "Templates"
@@ -12,11 +13,7 @@
                 "uuid": "f146bbe8f7394bc1a8b6eea78f40596e",
                 "template": "FreeBSD bhyve by Zabbix agent",
                 "name": "FreeBSD bhyve by Zabbix agent",
-                "description": "This dev template for bhyve uses pull request vm-bhyve\nhttps://github.com/churchers/vm-bhyve/pull/402\n\n# get branche json-list from guthub user runhyve\ncd /opt\ngit clone -b json-lists https://github.com/runhyve/vm-bhyve\n\n# zbx agent\ncat /usr/local/etc/zabbix6/zabbix_agentd.conf.d/zbx.bhyve.conf\nUserParameter=zbx.bhyve.vm.list,/usr/local/bin/sudo /usr/local/bin/zabbix-bhyve-list\nUserParameter=zbx.bhyve.vm.switch.list,/usr/local/bin/sudo /usr/local/bin/zabbix-bhyve-switch-list\nUserParameter=zbx.bhyve.vm.datastore.list,/usr/local/bin/sudo /usr/local/bin/zabbix-bhyve-datastore-list\n\n# sudo\ncat /usr/local/etc/sudoers.d/zabbix\nzabbix      ALL=NOPASSWD: /usr/local/bin/zabbix-bhyve-list, /usr/local/bin/zabbix-bhyve-switch-list, /usr/local/bin/zabbix-bhyve-datastore-list\n\n# example cmd\ncat /usr/local/bin/zabbix-bhyve-list\n#!/bin/sh\n\ncd /opt/vm-bhyve\n/opt/vm-bhyve/vm list -j",
-                "vendor": {
-                    "name": "Open-Tech",
-                    "version": "7.0-0"
-                },
+                "description": "This dev template for bhyve uses pull request vm-bhyve\nhttps://github.com/churchers/vm-bhyve/pull/402\n\n# get branche json-list from guthub user runhyve\ncd /opt\ngit clone -b json-lists https://github.com/runhyve/vm-bhyve\n\n# zbx agent\ncat /usr/local/etc/zabbix6/zabbix_agentd.conf.d/zbx.bhyve.conf\nUserParameter=zbx.bhyve.vm.list,/usr/local/bin/sudo /usr/local/bin/zabbix-bhyve-list\nUserParameter=zbx.bhyve.vm.switch.list,/usr/local/bin/sudo /usr/local/bin/zabbix-bhyve-switch-list\nUserParameter=zbx.bhyve.vm.datastore.list,/usr/local/bin/sudo /usr/local/bin/zabbix-bhyve-datastore-list\n\n# sudo\ncat /usr/local/etc/sudoers.d/zabbix\nzabbix      ALL=NOPASSWD: /usr/local/bin/zabbix-bhyve-list, /usr/local/bin/zabbix-bhyve-switch-list, /usr/local/bin/zabbix-bhyve-datastore-list\n\n# example cmd\ncat /usr/local/bin/zabbix-bhyve-list\n#!/bin/sh\n\ncd /opt/vm-bhyve\n/opt/vm-bhyve/vm list -j\nname: Open-Tech\nversion: 7.0-0",
                 "groups": [
                     {
                         "name": "Templates"
@@ -965,6 +962,16 @@
                                 "path": "$.name"
                             }
                         ]
+                    }
+                ],
+                "tags": [
+                    {
+                        "tag": "class",
+                        "value": "vm"
+                    },
+                    {
+                        "tag": "target",
+                        "value": "bhyve"
                     }
                 ],
                 "macros": [
