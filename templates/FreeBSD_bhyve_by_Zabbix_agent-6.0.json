@@ -1,7 +1,7 @@
 {
     "zabbix_export": {
         "version": "6.0",
-        "date": "2023-12-27T13:46:31Z",
+        "date": "2023-12-29T13:44:44Z",
         "groups": [
             {
                 "uuid": "7df96b18c230490a9a0a9e2307226338",
@@ -98,6 +98,7 @@
                         "key": "zbx.bhyve.vm.datastore",
                         "delay": "0",
                         "filter": {
+                            "evaltype": "AND",
                             "conditions": [
                                 {
                                     "macro": "{#BHYVE_DATASTORE_NAME}",
@@ -293,6 +294,7 @@
                         "key": "zbx.bhyve.vm.machines",
                         "delay": "0",
                         "filter": {
+                            "evaltype": "AND",
                             "conditions": [
                                 {
                                     "macro": "{#BHYVE_NAME}",
@@ -615,6 +617,7 @@
                         "key": "zbx.bhyve.vm.switches",
                         "delay": "0",
                         "filter": {
+                            "evaltype": "AND",
                             "conditions": [
                                 {
                                     "macro": "{#BHYVE_SWITCH_NAME}",
@@ -981,7 +984,7 @@
                     },
                     {
                         "macro": "{$BHYVE.DATASTORE.NAME.NOT_MATCHES}",
-                        "value": "^\\s$"
+                        "value": "CHANGE_IF_NEEDED"
                     },
                     {
                         "macro": "{$BHYVE.NAME.MATCHES}",
@@ -989,7 +992,7 @@
                     },
                     {
                         "macro": "{$BHYVE.NAME.NOT_MATCHES}",
-                        "value": "^\\s$"
+                        "value": "CHANGE_IF_NEEDED"
                     },
                     {
                         "macro": "{$BHYVE.SWITCH.NAME.MATCHES}",
@@ -997,7 +1000,7 @@
                     },
                     {
                         "macro": "{$BHYVE.SWITCH.NAME.NOT_MATCHES}",
-                        "value": "^\\s$"
+                        "value": "CHANGE_IF_NEEDED"
                     }
                 ]
             }

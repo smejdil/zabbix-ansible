@@ -86,6 +86,7 @@ zabbix_export:
           key: zbx.bhyve.vm.datastore
           delay: '0'
           filter:
+            evaltype: AND
             conditions:
               - macro: '{#BHYVE_DATASTORE_NAME}'
                 value: '{$BHYVE.DATASTORE.NAME.MATCHES}'
@@ -200,6 +201,7 @@ zabbix_export:
           key: zbx.bhyve.vm.machines
           delay: '0'
           filter:
+            evaltype: AND
             conditions:
               - macro: '{#BHYVE_NAME}'
                 value: '{$BHYVE.NAME.MATCHES}'
@@ -389,6 +391,7 @@ zabbix_export:
           key: zbx.bhyve.vm.switches
           delay: '0'
           filter:
+            evaltype: AND
             conditions:
               - macro: '{#BHYVE_SWITCH_NAME}'
                 value: '{$BHYVE.SWITCH.NAME.MATCHES}'

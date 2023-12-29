@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>6.0</version>
-    <date>2023-12-27T13:46:29Z</date>
+    <date>2023-12-29T13:44:43Z</date>
     <groups>
         <group>
             <uuid>7df96b18c230490a9a0a9e2307226338</uuid>
@@ -122,6 +122,7 @@ version: 7.0-0</description>
                     <key>zbx.bhyve.vm.datastore</key>
                     <delay>0</delay>
                     <filter>
+                        <evaltype>AND</evaltype>
                         <conditions>
                             <condition>
                                 <macro>{#BHYVE_DATASTORE_NAME}</macro>
@@ -317,6 +318,7 @@ version: 7.0-0</description>
                     <key>zbx.bhyve.vm.machines</key>
                     <delay>0</delay>
                     <filter>
+                        <evaltype>AND</evaltype>
                         <conditions>
                             <condition>
                                 <macro>{#BHYVE_NAME}</macro>
@@ -639,6 +641,7 @@ version: 7.0-0</description>
                     <key>zbx.bhyve.vm.switches</key>
                     <delay>0</delay>
                     <filter>
+                        <evaltype>AND</evaltype>
                         <conditions>
                             <condition>
                                 <macro>{#BHYVE_SWITCH_NAME}</macro>
@@ -1005,7 +1008,7 @@ version: 7.0-0</description>
                 </macro>
                 <macro>
                     <macro>{$BHYVE.DATASTORE.NAME.NOT_MATCHES}</macro>
-                    <value>^\s$</value>
+                    <value>CHANGE_IF_NEEDED</value>
                 </macro>
                 <macro>
                     <macro>{$BHYVE.NAME.MATCHES}</macro>
@@ -1013,7 +1016,7 @@ version: 7.0-0</description>
                 </macro>
                 <macro>
                     <macro>{$BHYVE.NAME.NOT_MATCHES}</macro>
-                    <value>^\s$</value>
+                    <value>CHANGE_IF_NEEDED</value>
                 </macro>
                 <macro>
                     <macro>{$BHYVE.SWITCH.NAME.MATCHES}</macro>
@@ -1021,7 +1024,7 @@ version: 7.0-0</description>
                 </macro>
                 <macro>
                     <macro>{$BHYVE.SWITCH.NAME.NOT_MATCHES}</macro>
-                    <value>^\s$</value>
+                    <value>CHANGE_IF_NEEDED</value>
                 </macro>
             </macros>
         </template>

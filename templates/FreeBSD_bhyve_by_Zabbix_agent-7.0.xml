@@ -123,6 +123,7 @@ cd /opt/vm-bhyve
                     <key>zbx.bhyve.vm.datastore</key>
                     <delay>0</delay>
                     <filter>
+                        <evaltype>AND</evaltype>
                         <conditions>
                             <condition>
                                 <macro>{#BHYVE_DATASTORE_NAME}</macro>
@@ -318,6 +319,7 @@ cd /opt/vm-bhyve
                     <key>zbx.bhyve.vm.machines</key>
                     <delay>0</delay>
                     <filter>
+                        <evaltype>AND</evaltype>
                         <conditions>
                             <condition>
                                 <macro>{#BHYVE_NAME}</macro>
@@ -640,6 +642,7 @@ cd /opt/vm-bhyve
                     <key>zbx.bhyve.vm.switches</key>
                     <delay>0</delay>
                     <filter>
+                        <evaltype>AND</evaltype>
                         <conditions>
                             <condition>
                                 <macro>{#BHYVE_SWITCH_NAME}</macro>
