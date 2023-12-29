@@ -589,16 +589,21 @@ zabbix_export:
           lld_macro_paths:
             - lld_macro: '{#BHYVE_SWITCH_NAME}'
               path: $.name
+      tags:
+        - tag: class
+          value: vm
+        - tag: target
+          value: bhyve
       macros:
         - macro: '{$BHYVE.DATASTORE.NAME.MATCHES}'
           value: '^.*$'
         - macro: '{$BHYVE.DATASTORE.NAME.NOT_MATCHES}'
-          value: ^\s$
+          value: CHANGE_IF_NEEDED
         - macro: '{$BHYVE.NAME.MATCHES}'
           value: '^.*$'
         - macro: '{$BHYVE.NAME.NOT_MATCHES}'
-          value: ^\s$
+          value: CHANGE_IF_NEEDED
         - macro: '{$BHYVE.SWITCH.NAME.MATCHES}'
           value: '^.*$'
         - macro: '{$BHYVE.SWITCH.NAME.NOT_MATCHES}'
-          value: ^\s$
+          value: CHANGE_IF_NEEDED

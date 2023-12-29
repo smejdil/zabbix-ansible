@@ -989,6 +989,16 @@ cd /opt/vm-bhyve
                     </lld_macro_paths>
                 </discovery_rule>
             </discovery_rules>
+            <tags>
+                <tag>
+                    <tag>class</tag>
+                    <value>vm</value>
+                </tag>
+                <tag>
+                    <tag>target</tag>
+                    <value>bhyve</value>
+                </tag>
+            </tags>
             <macros>
                 <macro>
                     <macro>{$BHYVE.DATASTORE.NAME.MATCHES}</macro>
@@ -996,7 +1006,7 @@ cd /opt/vm-bhyve
                 </macro>
                 <macro>
                     <macro>{$BHYVE.DATASTORE.NAME.NOT_MATCHES}</macro>
-                    <value>^\s$</value>
+                    <value>CHANGE_IF_NEEDED</value>
                 </macro>
                 <macro>
                     <macro>{$BHYVE.NAME.MATCHES}</macro>
@@ -1004,7 +1014,7 @@ cd /opt/vm-bhyve
                 </macro>
                 <macro>
                     <macro>{$BHYVE.NAME.NOT_MATCHES}</macro>
-                    <value>^\s$</value>
+                    <value>CHANGE_IF_NEEDED</value>
                 </macro>
                 <macro>
                     <macro>{$BHYVE.SWITCH.NAME.MATCHES}</macro>
@@ -1012,7 +1022,7 @@ cd /opt/vm-bhyve
                 </macro>
                 <macro>
                     <macro>{$BHYVE.SWITCH.NAME.NOT_MATCHES}</macro>
-                    <value>^\s$</value>
+                    <value>CHANGE_IF_NEEDED</value>
                 </macro>
             </macros>
         </template>

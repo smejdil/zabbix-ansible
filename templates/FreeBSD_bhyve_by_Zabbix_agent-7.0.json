@@ -967,6 +967,16 @@
                         ]
                     }
                 ],
+                "tags": [
+                    {
+                        "tag": "class",
+                        "value": "vm"
+                    },
+                    {
+                        "tag": "target",
+                        "value": "bhyve"
+                    }
+                ],
                 "macros": [
                     {
                         "macro": "{$BHYVE.DATASTORE.NAME.MATCHES}",
@@ -974,7 +984,7 @@
                     },
                     {
                         "macro": "{$BHYVE.DATASTORE.NAME.NOT_MATCHES}",
-                        "value": "^\\s$"
+                        "value": "CHANGE_IF_NEEDED"
                     },
                     {
                         "macro": "{$BHYVE.NAME.MATCHES}",
@@ -982,7 +992,7 @@
                     },
                     {
                         "macro": "{$BHYVE.NAME.NOT_MATCHES}",
-                        "value": "^\\s$"
+                        "value": "CHANGE_IF_NEEDED"
                     },
                     {
                         "macro": "{$BHYVE.SWITCH.NAME.MATCHES}",
@@ -990,7 +1000,7 @@
                     },
                     {
                         "macro": "{$BHYVE.SWITCH.NAME.NOT_MATCHES}",
-                        "value": "^\\s$"
+                        "value": "CHANGE_IF_NEEDED"
                     }
                 ]
             }
