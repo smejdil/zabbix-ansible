@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>6.0</version>
-    <date>2023-12-29T13:44:43Z</date>
+    <date>2024-01-10T15:31:08Z</date>
     <groups>
         <group>
             <uuid>7df96b18c230490a9a0a9e2307226338</uuid>
@@ -624,6 +624,34 @@ version: 7.0-0</description>
                             </tags>
                         </item_prototype>
                     </item_prototypes>
+                    <trigger_prototypes>
+                        <trigger_prototype>
+                            <uuid>530436b143884a7e802d6e97a78207e2</uuid>
+                            <expression>find(/FreeBSD bhyve by Zabbix agent/zbx.bhyve.vm.state[{#BHYVE_NAME}],,&quot;like&quot;,&quot;Stopped&quot;)=1 and find(/FreeBSD bhyve by Zabbix agent/zbx.bhyve.vm.auto[{#BHYVE_NAME}],,&quot;like&quot;,&quot;Yes&quot;)=1</expression>
+                            <name>VM Host {#BHYVE_NAME} is not running</name>
+                            <priority>WARNING</priority>
+                            <manual_close>YES</manual_close>
+                            <tags>
+                                <tag>
+                                    <tag>bhyve</tag>
+                                    <value>running</value>
+                                </tag>
+                            </tags>
+                        </trigger_prototype>
+                        <trigger_prototype>
+                            <uuid>3e6f20f4d2e64435859ffe6dd8cc345c</uuid>
+                            <expression>find(/FreeBSD bhyve by Zabbix agent/zbx.bhyve.vm.state[{#BHYVE_NAME}],,&quot;like&quot;,&quot;Running&quot;)=1 and find(/FreeBSD bhyve by Zabbix agent/zbx.bhyve.vm.auto[{#BHYVE_NAME}],,&quot;like&quot;,&quot;No&quot;)=1</expression>
+                            <name>VM Host {#BHYVE_NAME} is running without auto start</name>
+                            <priority>INFO</priority>
+                            <manual_close>YES</manual_close>
+                            <tags>
+                                <tag>
+                                    <tag>bhyve</tag>
+                                    <value>auto</value>
+                                </tag>
+                            </tags>
+                        </trigger_prototype>
+                    </trigger_prototypes>
                     <master_item>
                         <key>zbx.bhyve.vm.list</key>
                     </master_item>

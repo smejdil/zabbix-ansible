@@ -1,7 +1,7 @@
 {
     "zabbix_export": {
         "version": "6.0",
-        "date": "2023-12-29T13:44:44Z",
+        "date": "2024-01-10T15:31:10Z",
         "groups": [
             {
                 "uuid": "7df96b18c230490a9a0a9e2307226338",
@@ -596,6 +596,34 @@
                                     {
                                         "tag": "target",
                                         "value": "bhyve"
+                                    }
+                                ]
+                            }
+                        ],
+                        "trigger_prototypes": [
+                            {
+                                "uuid": "530436b143884a7e802d6e97a78207e2",
+                                "expression": "find(/FreeBSD bhyve by Zabbix agent/zbx.bhyve.vm.state[{#BHYVE_NAME}],,\"like\",\"Stopped\")=1 and find(/FreeBSD bhyve by Zabbix agent/zbx.bhyve.vm.auto[{#BHYVE_NAME}],,\"like\",\"Yes\")=1",
+                                "name": "VM Host {#BHYVE_NAME} is not running",
+                                "priority": "WARNING",
+                                "manual_close": "YES",
+                                "tags": [
+                                    {
+                                        "tag": "bhyve",
+                                        "value": "running"
+                                    }
+                                ]
+                            },
+                            {
+                                "uuid": "3e6f20f4d2e64435859ffe6dd8cc345c",
+                                "expression": "find(/FreeBSD bhyve by Zabbix agent/zbx.bhyve.vm.state[{#BHYVE_NAME}],,\"like\",\"Running\")=1 and find(/FreeBSD bhyve by Zabbix agent/zbx.bhyve.vm.auto[{#BHYVE_NAME}],,\"like\",\"No\")=1",
+                                "name": "VM Host {#BHYVE_NAME} is running without auto start",
+                                "priority": "INFO",
+                                "manual_close": "YES",
+                                "tags": [
+                                    {
+                                        "tag": "bhyve",
+                                        "value": "auto"
                                     }
                                 ]
                             }
