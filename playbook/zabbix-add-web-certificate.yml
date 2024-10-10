@@ -2,29 +2,26 @@
 - name: Using Zabbix collection
   hosts: all
   connection: local
-  collections:
-    - community.zabbix
 
   vars_files:
     - vars/vars.yml
 
   tasks:
+    - name: Set credentials to access Zabbix Server API
+      ansible.builtin.set_fact:
+        ansible_user: "{{ lookup('env','ZABBIX_USER') }}"
+        ansible_httpapi_pass: "{{ lookup('env','ZABBIX_PASSWORD') }}"
+
     - name: Create host groups
-      zabbix_group:
-        server_url: "{{ server_url }}"
-        login_user: "{{ lookup('env','ZABBIX_USER') }}"
-        login_password: "{{ lookup('env','ZABBIX_PASSWORD') }}"
+      community.zabbix.zabbix_group:
         state: present
         host_groups:
           - Internet servers
-
+  
     - name: Create a host for cert monitoring
-      zabbix_host:
-        server_url: "{{ server_url }}"
-        login_user: "{{ lookup('env','ZABBIX_USER') }}"
-        login_password: "{{ lookup('env','ZABBIX_PASSWORD') }}"
-        host_name: "{{ ansible_host }}"
-        visible_name: Cert - {{ ansible_host }}
+      community.zabbix.zabbix_host:
+        host_name: "{{ inventory_hostname }}"
+        visible_name: Cert - {{ inventory_hostname }}
         description: Monitoring SSL cert
         host_groups:
           - Internet servers
@@ -38,18 +35,12 @@
             main: 1
             useip: 1
             ip: 127.0.0.1
-            dns: "{{ ansible_host }}"
+            dns: "{{ inventory_hostname }}"
             port: "10050"
+        macros:
+          - macro: "{$CERT.WEBSITE.HOSTNAME}"
+            value: "{{ inventory_hostname }}"
         tags:
           - tag: Security
             value: SSL
-
-    - name: Create host macro
-      zabbix_hostmacro:
-        server_url: "{{ server_url }}"
-        login_user: "{{ lookup('env','ZABBIX_USER') }}"
-        login_password: "{{ lookup('env','ZABBIX_PASSWORD') }}"
-        host_name: "{{ ansible_host }}"        
-        macro_name: "{$CERT.WEBSITE.HOSTNAME}"
-        macro_value: "{{ ansible_host }}"
-        state: present
+...
